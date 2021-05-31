@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "470507141437",
+    "project_id": "geopet-9028c",
+    "storage_bucket": "geopet-9028c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470507141437:android:163989bedde35afcff2d54",
+        "android_client_info": {
+          "package_name": "com.example.geopet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470507141437-dvj57dt510q995etbpihpq3k7i35vmkk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1ABxqYdraGX-gXThepUmK_4LGoFci2tI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470507141437-dvj57dt510q995etbpihpq3k7i35vmkk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
