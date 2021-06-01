@@ -30,4 +30,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         android:onClick="logout"/>
 
+    <Button
+        android:id="@+id/post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Crear Post"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logout"
+        android:onClick="crearPost"
+
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
