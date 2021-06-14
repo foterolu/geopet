@@ -27,11 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="80dp"
+        android:layout_marginRight="10dp"
         android:hint="Nombre"
-        android:inputType="textPersonName"
-         />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/raza"
@@ -51,7 +50,7 @@
     <EditText
         android:id="@+id/description"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="75dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="12dp"
