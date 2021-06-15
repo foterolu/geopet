@@ -1,8 +1,5 @@
 package com.example.geopet;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -20,16 +17,16 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -37,8 +34,6 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import Model.Post;
 
 public class createPost extends AppCompatActivity {
     EditText mnombre,mraza,mdescripcion,mcontacto;
@@ -53,6 +48,7 @@ public class createPost extends AppCompatActivity {
     DatabaseReference databaseReference;
     ProgressDialog progressDialog ;
 
+    String Imageuri;
     int Image_Request_Code = 7;
 
     @Override
@@ -116,27 +112,20 @@ public class createPost extends AppCompatActivity {
                 FirebaseAuth fAuth        = FirebaseAuth.getInstance();
                 String user = fAuth.getCurrentUser().getEmail();
 
+
+
+
                 post.put("nombre", nombre);
                 post.put("raza",raza);
                 post.put("descripcion",descripcion);
                 post.put("contacto",contacto);
                 post.put("usuario",user);
-                post.put("imagePath", path);
 
-                db.collection("post").add(post).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("tagy","Anuncio ingresado");
-                        Toast.makeText(createPost.this, "Anuncio Creado", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("tagy","Ingreso Fallido");
-                    }
-                });
-                UploadImage();
+
+                UploadImage(post);
+
+
+
 
 
             }
@@ -172,27 +161,42 @@ public class createPost extends AppCompatActivity {
 
     }
 
-    public void UploadImage() {
+    public void UploadImage(Map<String,Object> post ) {
 
         if (FilePathUri != null) {
 
             progressDialog.setTitle("Image is Uploading...");
             progressDialog.show();
-            StorageReference storageReference2 = storageReference.child(System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
+            Imageuri = System.currentTimeMillis() + "." + GetFileExtension(FilePathUri);
+            StorageReference storageReference2 = storageReference.child(Imageuri );
             storageReference2.putFile(FilePathUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
+                            post.put("imagePath", Imageuri);
                             String TempImageName = "removerEstaWEa";
                             progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                             @SuppressWarnings("VisibleForTests")
-                            uploadinfo imageUploadInfo = new uploadinfo(TempImageName, taskSnapshot.getUploadSessionUri().toString());
+                            uploadinfo imageUploadInfo = new uploadinfo(TempImageName, Imageuri);
                             String ImageUploadId = databaseReference.push().getKey();
                             databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
+                            db.collection("post").add(post).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    Log.d("tagy","Anuncio ingresado");
+                                    Toast.makeText(createPost.this, "Anuncio Creado", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d("tagy","Ingreso Fallido");
+                                }
+                            });
                         }
                     });
+
         }
         else {
 
