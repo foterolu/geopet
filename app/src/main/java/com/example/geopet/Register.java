@@ -1,8 +1,5 @@
 package com.example.geopet;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +9,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -80,7 +80,15 @@ public class Register extends AppCompatActivity {
 
                             Toast.makeText(Register.this, "Usuario Creado", Toast.LENGTH_SHORT).show();
                             //flag = true;
-                            //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("nombre", name);
+                            user.put("celular", phone);
+                            user.put("email",email);
+                            //falta la comuna
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            //String Userid =fAuth.getCurrentUser().getUid();
+                            db.collection("user").document(email).set(user);
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
                         }else{
                             Toast.makeText(Register.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -89,16 +97,8 @@ public class Register extends AppCompatActivity {
                     }
                 });
 
-                /*
-                Map<String, Object> user = new HashMap<>();
-                user.put("nombre", name);
-                user.put("celular", phone);
-                user.put("email",email);
-                //falta la comuna
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                //String Userid =fAuth.getCurrentUser().getUid();
-                db.collection("user").document(email).set(user);
-                startActivity(new Intent(getApplicationContext(),MainActivity.class)); */
+
+
 
 
 

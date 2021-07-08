@@ -165,7 +165,7 @@ public class createPost extends AppCompatActivity {
 
         if (FilePathUri != null) {
 
-            progressDialog.setTitle("Image is Uploading...");
+            progressDialog.setTitle("Subiendo  Imagen");
             progressDialog.show();
             Imageuri = System.currentTimeMillis() + "." + GetFileExtension(FilePathUri);
             StorageReference storageReference2 = storageReference.child(Imageuri );
@@ -174,7 +174,7 @@ public class createPost extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             post.put("imagePath", Imageuri);
-                            String TempImageName = "removerEstaWEa";
+                            String TempImageName = "Remover";
                             progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                             @SuppressWarnings("VisibleForTests")

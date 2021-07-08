@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         db.collection("post").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        System.out.println("HOLAPOTOPOTOPOTO");
+
                         if (task.isSuccessful()) {
                             ArrayList<String> links = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
