@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -29,4 +30,7 @@
                 android:id="@+id/cardTitle"></TextView>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+
+
 </LinearLayout>

@@ -1,2 +1,4 @@
 include ':app'
 rootProject.name = "geopet"
+include ':sample'
+include ':library'
