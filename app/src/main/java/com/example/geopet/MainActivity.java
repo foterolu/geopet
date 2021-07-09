@@ -43,11 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        /*
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
-        */
+
         setContentView(R.layout.nav_activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
