@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#FFD600"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_baseline_rowing_24"></ImageView>
+
+        <TextView
+            android:id="@+id/fullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/profile_image"
+            android:fontFamily="sans-serif"
+
+            android:text="Nombre del compita"
+            android:textSize="25sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fullname"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/profile_image"
+            android:text="descripcion del compita"
+            android:textSize="14sp"
+            android:textStyle="italic">
+
+        </TextView>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@color/browser_actions_bg_grey">
+
+        <TextView
+            android:paddingTop="10dp"
+            android:id="@+id/profile_contacto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_phone_android_24"
+            android:drawableTint="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:text="+56996704608"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold|italic">
+
+        </TextView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0"/>
+        <TextView
+            android:paddingTop="10dp"
+            android:id="@+id/profile_comuna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_home_24"
+            android:drawableTint="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:text="Curico"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold|italic">
+
+        </TextView>
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0"/>
+
+        <TextView
+            android:paddingTop="10dp"
+            android:id="@+id/profile_comuna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:drawableTint="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:text="correo@gmail.com"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold|italic">
+
+        </TextView>
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

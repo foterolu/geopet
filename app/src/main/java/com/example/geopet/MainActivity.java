@@ -14,16 +14,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.geopet.ui.gallery.GalleryFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -32,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ListView mListView;
     private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private  FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +53,34 @@ public class MainActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
+        /*Se incializa la app bar  */
         setContentView(R.layout.nav_activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /*Se incializa el drawer */
         drawerLayout = findViewById(R.id.drawer_layout);
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);//icono de drawer
+
+        navigationView = findViewById(R.id.nav_view);
+
+        //establecer evento onClick al navigationView
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+                if(item.getItemId() == R.id.nav_cuenta){
+
+                    startActivity(new Intent(getApplicationContext(),createPost.class));
+                }
+                return false;
+            }
+        });
+
+
+
+        /*Se cargan las publicaciones en el dashboard */
         mListView = (ListView) findViewById(R.id.listView);
         ArrayList<Card> list = new ArrayList<>();
         db.collection("post").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -110,8 +139,14 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
 
+
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
+
 }
