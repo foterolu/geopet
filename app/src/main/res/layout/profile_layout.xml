@@ -58,7 +58,7 @@
             android:drawableTint="@color/black"
             android:fontFamily="sans-serif-medium"
             android:text="+56996704608"
-            android:textAlignment="center"
+            android:textAlignment="gravity"
             android:textSize="25sp"
             android:textStyle="bold|italic">
 
@@ -76,7 +76,7 @@
             android:drawableTint="@color/black"
             android:fontFamily="sans-serif-medium"
             android:text="Curico"
-            android:textAlignment="center"
+            android:textAlignment="gravity"
             android:textSize="25sp"
             android:textStyle="bold|italic">
 
@@ -89,14 +89,14 @@
 
         <TextView
             android:paddingTop="10dp"
-            android:id="@+id/profile_comuna"
+            android:id="@+id/profile_mail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_baseline_email_24"
             android:drawableTint="@color/black"
             android:fontFamily="sans-serif-medium"
             android:text="correo@gmail.com"
-            android:textAlignment="center"
+            android:textAlignment="gravity"
             android:textSize="25sp"
             android:textStyle="bold|italic">
 
