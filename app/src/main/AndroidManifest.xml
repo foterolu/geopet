@@ -15,10 +15,19 @@
             android:name=".Drawer"
             android:label="@string/title_activity_drawer"
             android:theme="@style/Theme.Geopet.NoActionBar"></activity>
-        <activity android:name=".createPost" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".createPost" android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+            />
+        </activity>
+
+
         <activity android:name=".Register">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

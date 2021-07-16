@@ -56,6 +56,8 @@ public class createPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_post);
 
+
+
         mnombre      = findViewById(R.id.name);
         mraza        = findViewById(R.id.raza);
         mdescripcion = findViewById(R.id.description);
@@ -129,6 +131,8 @@ public class createPost extends AppCompatActivity {
 
 
             }
+
+
         });
 
 }
