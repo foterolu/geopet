@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.maps.internal.IGoogleMapDelegate;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -48,7 +49,7 @@ public class createPost extends AppCompatActivity {
     StorageReference storageReference;
     DatabaseReference databaseReference;
     ProgressDialog progressDialog ;
-
+    private Toolbar toolbar;
     String Imageuri;
     int Image_Request_Code = 7;
 
@@ -56,6 +57,9 @@ public class createPost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_post);
+        
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
         mnombre      = findViewById(R.id.name);
