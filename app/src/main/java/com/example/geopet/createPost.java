@@ -20,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.maps.internal.IGoogleMapDelegate;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,7 +39,7 @@ import java.util.Map;
 public class createPost extends AppCompatActivity {
     EditText mnombre,mraza,mdescripcion,mcontacto;
     ListView Post;
-    Button ingresar,btnbrowse;
+    Button ingresar,btnbrowse, btnmap;
 
     FirebaseFirestore db;
 
@@ -57,13 +58,13 @@ public class createPost extends AppCompatActivity {
         setContentView(R.layout.activity_create_post);
 
 
-
         mnombre      = findViewById(R.id.name);
         mraza        = findViewById(R.id.raza);
         mdescripcion = findViewById(R.id.description);
         mcontacto    = findViewById(R.id.phone2);
         ingresar = findViewById(R.id.añadir);
         btnbrowse = (Button)findViewById(R.id.btnbrowse);
+        btnmap = (Button)findViewById(R.id.btnmap);
         progressDialog = new ProgressDialog(createPost.this);
         imgview = findViewById(R.id.image_view);
 
@@ -80,6 +81,13 @@ public class createPost extends AppCompatActivity {
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Select Image"), Image_Request_Code);
 
+            }
+        });
+        btnmap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent fp=new Intent(getApplicationContext(),MapsActivity.class);
+                startActivity(fp);
             }
         });
 

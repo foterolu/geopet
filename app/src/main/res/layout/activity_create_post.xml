@@ -70,8 +70,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="12dp"
             android:layout_marginRight="10dp"
-            android:hint="Número de contacto"
             android:autofillHints="+56912345678"
+            android:hint="Número de contacto"
             android:inputType="phone" />
 
         <LinearLayout
@@ -95,7 +95,14 @@
                 android:layout_weight="3"
                 android:text="Seleccionar Foto" />
         </LinearLayout>
-
+        <Button
+            android:id="@+id/btnmap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="3"
+            android:text="Selecciona Lugar" />
         <Button
             android:id="@+id/añadir"
             android:layout_width="wrap_content"
