@@ -4,7 +4,11 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
+<<<<<<< HEAD
     https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=DC:F1:EB:F8:00:1D:16:D1:8C:11:AA:2A:3B:7A:00:E8:DF:57:F6:38%3Bcom.example.geopet
+=======
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=4F:2D:ED:2F:79:40:CF:59:9F:B4:18:8F:AF:FE:A5:0C:4E:08:03:13%3Bcom.example.geopet
+>>>>>>> origin/main
 
     You can also add your credentials to an existing key, using these values:
 
@@ -12,7 +16,11 @@
     com.example.geopet
 
     SHA-1 certificate fingerprint:
+<<<<<<< HEAD
     DC:F1:EB:F8:00:1D:16:D1:8C:11:AA:2A:3B:7A:00:E8:DF:57:F6:38
+=======
+    4F:2D:ED:2F:79:40:CF:59:9F:B4:18:8F:AF:FE:A5:0C:4E:08:03:13
+>>>>>>> origin/main
 
     Alternatively, follow the directions here:
     https://developers.google.com/maps/documentation/android/start#get-key
@@ -21,4 +29,5 @@
     string in this file.
     -->
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyA9acNb-VDuPdsYpX5mU4XvwoSMjCCdqps</string>
+
 </resources>
