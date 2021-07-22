@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         // Create a storage reference from our app
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
+        System.out.println("-------------------PRUEBA--------------------------");
 
        // Create a reference with an initial file path and name
 
