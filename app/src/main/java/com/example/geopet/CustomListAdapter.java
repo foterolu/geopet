@@ -73,6 +73,7 @@ public class CustomListAdapter extends ArrayAdapter<Card> {
             holder= new ViewHolder();
             holder.title = (TextView) convertView.findViewById(R.id.cardTitle);
             holder.image = (ImageView) convertView.findViewById(R.id.cardImage);
+            holder.image.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
             result = convertView;
 
