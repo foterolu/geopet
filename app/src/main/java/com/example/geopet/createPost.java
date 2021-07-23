@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 
 import com.google.android.gms.maps.internal.IGoogleMapDelegate;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -33,8 +35,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class createPost extends AppCompatActivity {
@@ -45,7 +50,7 @@ public class createPost extends AppCompatActivity {
     FirebaseFirestore db;
 
     ImageView imgview;
-    Uri FilePathUri;
+    List<Uri> FilePathUri;
     StorageReference storageReference;
     DatabaseReference databaseReference;
     ProgressDialog progressDialog ;
@@ -57,11 +62,13 @@ public class createPost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_post);
-        
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
+        FilePathUri = new ArrayList<>();;
         mnombre      = findViewById(R.id.name);
         mraza        = findViewById(R.id.raza);
         mdescripcion = findViewById(R.id.description);
@@ -83,6 +90,7 @@ public class createPost extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(Intent.createChooser(intent, "Select Image"), Image_Request_Code);
 
             }
@@ -105,7 +113,7 @@ public class createPost extends AppCompatActivity {
                 String raza        = mraza.getText().toString().trim();
                 String descripcion = mdescripcion.getText().toString().trim();
                 String contacto    = mcontacto.getText().toString().trim();
-                String path = System.currentTimeMillis() + "." + GetFileExtension(FilePathUri);
+                String path = System.currentTimeMillis() + "." + GetFileExtension(FilePathUri.get(0));
 
                 if(TextUtils.isEmpty(contacto)){
                     mcontacto.setError("Número Requerido");
@@ -126,22 +134,13 @@ public class createPost extends AppCompatActivity {
                 FirebaseAuth fAuth        = FirebaseAuth.getInstance();
                 String user = fAuth.getCurrentUser().getEmail();
 
-
-
-
                 post.put("nombre", nombre);
                 post.put("raza",raza);
                 post.put("descripcion",descripcion);
                 post.put("contacto",contacto);
                 post.put("usuario",user);
 
-
                 UploadImage(post);
-
-
-
-
-
             }
 
 
@@ -154,18 +153,32 @@ public class createPost extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
-            FilePathUri = data.getData();
 
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri);
-                imgview.setImageBitmap(bitmap);
+        if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null) {
+            if(data.getClipData() != null){
+
+                for(int i = 0; i < data.getClipData().getItemCount() ; i++) {
+                    System.out.println("------------------------POR ACA-----------------------------------");
+                    Uri uri = data.getClipData().getItemAt(i).getUri();
+                    System.out.println(uri);
+                    FilePathUri.add(uri);
+                }
+                System.out.println(FilePathUri);
+
+            }else {
+                try {
+                    FilePathUri.add(data.getData());
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+                    imgview.setImageBitmap(bitmap);
+                }
+                catch (IOException e){
+
+                    System.out.println("Error al cargar la imagen");
+                }
             }
-            catch (IOException e) {
 
-                e.printStackTrace();
-            }
+
         }
     }
 
@@ -178,7 +191,7 @@ public class createPost extends AppCompatActivity {
     }
 
     public void UploadImage(Map<String,Object> post ) {
-
+/*
         if (FilePathUri != null) {
 
             progressDialog.setTitle("Subiendo  Imagen");
@@ -219,6 +232,45 @@ public class createPost extends AppCompatActivity {
             Toast.makeText(createPost.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
 
         }
+
+ */
+        if (FilePathUri != null) {
+            List<String> Imageuri = new ArrayList<>();
+            for(int i = 0; i<FilePathUri.size() ; i++){
+                progressDialog.setTitle("Subiendo  Imagen");
+                progressDialog.show();
+                Imageuri.add(System.currentTimeMillis() + "." + GetFileExtension(FilePathUri.get(i)));
+                StorageReference storageReference2 = storageReference.child(Imageuri.get(i));
+                storageReference2.putFile(FilePathUri.get(i)); //se agrega el archivo i a firestorage
+
+            }
+
+
+            post.put("imagePath", Imageuri);
+            progressDialog.dismiss();
+            Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
+
+            db.collection("post").add(post).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    Log.d("tagy","Anuncio ingresado");
+                    Toast.makeText(createPost.this, "Anuncio Creado", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("tagy","Ingreso Fallido");
+                }
+            });
+        FilePathUri.clear();
+        Imageuri.clear();
+
+        }else {
+
+            Toast.makeText(createPost.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
+
+        }
     }
 
     public class uploadinfo {
@@ -238,6 +290,19 @@ public class createPost extends AppCompatActivity {
         public String getImageURL() {
             return imageURL;
         }
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                System.out.println("-------------------PRUEBA--------------------------");
+                finish();
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

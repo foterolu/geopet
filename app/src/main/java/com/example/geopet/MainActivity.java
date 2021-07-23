@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         // Create a storage reference from our app
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        System.out.println("-------------------PRUEBA--------------------------");
+
 
        // Create a reference with an initial file path and name
 
@@ -93,25 +93,69 @@ public class MainActivity extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             ArrayList<String> links = new ArrayList<>();
+
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                System.out.println("images/" + (String) document.getData().get("imagePath"));
-                                StorageReference pathReference = storageRef.child("Images/" + (String) document.getData().get("imagePath"));
+                                ArrayList<String> images = new ArrayList<>();
+                                String image = new String();
+                                System.out.println("----------------VOY DE PANA----------------------");
+                                System.out.println(document.getData().get("imagePath").getClass());
+                                if(document.getData().get("imagePath").getClass() == image.getClass()){
+
+                                    //System.out.println("images/" + (String) document.getData().get("imagePath"));
+                                    StorageReference pathReference = storageRef.child("Images/" + document.getData().get("imagePath"));
+
+                                    pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+
+                                            links.add(uri.toString());
+                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion")));
+                                            System.out.println(links);
+                                            CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+                                            mListView.setAdapter(adapter);
+                                        }
+                                    });
+                                    System.out.println(links);
+                                }else{
+                                    images = (ArrayList<String>)  document.getData().get("imagePath");
+                                    //System.out.println("images/" + (String) document.getData().get("imagePath"));
+                                    StorageReference pathReference = storageRef.child("Images/" + images.get(0));
+                                    //String FirePath = "gs://geopet-9028c.appspot.com/" + "Images/"  +(String) document.getData().get("imagePath");
+                                    //System.out.println(FirePath);
+                                    pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+
+                                            links.add(uri.toString());
+                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion")));
+                                            System.out.println(links);
+                                            CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+                                            mListView.setAdapter(adapter);
+                                        }
+                                    });
+                                    System.out.println(links);
+                                }
+
+/*
+
+                                //System.out.println("images/" + (String) document.getData().get("imagePath"));
+                                StorageReference pathReference = storageRef.child("Images/" + document.getData().get("imagePath"));
                                 //String FirePath = "gs://geopet-9028c.appspot.com/" + "Images/"  +(String) document.getData().get("imagePath");
                                 //System.out.println(FirePath);
-
                                 pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
                                     public void onSuccess(Uri uri) {
+
                                         links.add(uri.toString());
                                         list.add(new Card(uri.toString(), (String) document.getData().get("descripcion")));
                                         System.out.println(links);
                                         CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                         mListView.setAdapter(adapter);
                                     }
-
                                 });
                                 System.out.println(links);
 
+ */
                             }
 
 
