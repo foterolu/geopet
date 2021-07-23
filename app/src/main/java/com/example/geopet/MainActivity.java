@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -36,8 +37,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private static final String TAG = "MainActivity";
+    private final ArrayList<Card> list=new ArrayList<>();
     private Toolbar toolbar;
     private ListView mListView;
     private DrawerLayout drawerLayout;
@@ -86,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
 
         /*Se cargan las publicaciones en el dashboard */
         mListView = (ListView) findViewById(R.id.listView);
-        ArrayList<Card> list = new ArrayList<>();
+
+
+
         db.collection("post").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -164,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+        mListView.setOnItemClickListener(this);
 
     }
 
@@ -188,6 +193,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_search:
                 Toast.makeText(this, "boton busqueda", Toast.LENGTH_SHORT ).show();
+
+
                 return true;
 
 
@@ -208,5 +215,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        Toast.makeText(this, list.get(position).getTitle(), Toast.LENGTH_SHORT ).show();
 
+
+
+
+    }
 }
