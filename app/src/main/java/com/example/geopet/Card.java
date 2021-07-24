@@ -7,12 +7,19 @@ import java.util.ArrayList;
 public class Card implements Serializable {
     private String imgUrl;
     private String title;
+    private String userId;
     private ArrayList<String> Uris;
 
-    public Card(String imgUrl, String title, ArrayList<String> Uris) {
+
+
+    public Card(String imgUrl, String title, ArrayList<String> Uris, String userId) {
         this.imgUrl = imgUrl;
         this.title = title;
         this.Uris = Uris;
+        this.userId = userId;
+    }
+    public String getUserId() {
+        return userId;
     }
 
     public ArrayList<String> getUris() {

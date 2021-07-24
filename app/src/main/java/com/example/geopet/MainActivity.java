@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 System.out.println(document.getData().get("imagePath").getClass());
                                 if(document.getData().get("imagePath").getClass() == image.getClass() ){
                                     image = (String) document.getData().get("imagePath");
+                                    String userId = (String) document.getData().get("userId");
                                     images.add(image);
                                     //System.out.println("images/" + (String) document.getData().get("imagePath"));
                                     StorageReference pathReference = storageRef.child("Images/" + document.getData().get("imagePath"));
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                         @Override
                                         public void onSuccess(Uri uri) {
                                             links.add(uri.toString());
-                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images));
+                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId));
                                             System.out.println(links);
                                             CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             mListView.setAdapter(adapter);
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                                 }else{
                                     images = (ArrayList<String>)  document.getData().get("imagePath");
+                                    String userId = (String) document.getData().get("userId");
                                     System.out.println(images);
                                     StorageReference pathReference = storageRef.child("Images/" + images.get(0));
                                     System.out.println("Images/" + images.get(0));
@@ -141,9 +143,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                         @Override
                                         public void onSuccess(Uri uri) {
                                             System.out.println("----------------Dentro del OnSuccess----------------");
+                                            System.out.println(uri.toString());
                                             links.add(uri.toString());
-                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),(ArrayList<String>)  document.getData().get("imagePath")));
-
+                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
+                                                   images,userId));
+                                            CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+                                            mListView.setAdapter(adapter);
                                             //System.out.println(links);
 
                                         }
@@ -155,29 +160,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                                 }
 
-                                CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
-                                mListView.setAdapter(adapter);
-
-/*
-
-                                //System.out.println("images/" + (String) document.getData().get("imagePath"));
-                                StorageReference pathReference = storageRef.child("Images/" + document.getData().get("imagePath"));
-                                //String FirePath = "gs://geopet-9028c.appspot.com/" + "Images/"  +(String) document.getData().get("imagePath");
-                                //System.out.println(FirePath);
-                                pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-
-                                        links.add(uri.toString());
-                                        list.add(new Card(uri.toString(), (String) document.getData().get("descripcion")));
-                                        System.out.println(links);
-                                        CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
-                                        mListView.setAdapter(adapter);
-                                    }
-                                });
-                                System.out.println(links);
-
- */
                             }
 
 
@@ -222,7 +204,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater= getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -234,7 +215,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Toast.makeText(this, list.get(position).getTitle(), Toast.LENGTH_SHORT ).show();
         Card card= list.get(position);
         Intent intent= new Intent(MainActivity.this, SinglePost.class);
-
         Bundle bundle= new Bundle();
         bundle.putSerializable("card", card);
         intent.putExtras(bundle);

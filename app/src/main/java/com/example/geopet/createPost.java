@@ -144,12 +144,14 @@ public class createPost extends AppCompatActivity {
                 Map<String,Object> post = new HashMap<>();
                 FirebaseAuth fAuth        = FirebaseAuth.getInstance();
                 String user = fAuth.getCurrentUser().getEmail();
+                String userId = fAuth.getCurrentUser().getUid();
 
                 post.put("nombre", nombre);
                 post.put("raza",raza);
                 post.put("descripcion",descripcion);
                 post.put("contacto",contacto);
                 post.put("usuario",user);
+                post.put("userId",userId);
                 post.put("lat",lat);
                 post.put("long",lon);
 
