@@ -54,7 +54,10 @@ public class CustomListAdapter extends ArrayAdapter<Card> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         //sets up the image loader library
-        setupImageLoader();
+        if(!ImageLoader.getInstance().isInited()){
+            setupImageLoader();
+        }
+
 
         //get the persons information
         String title = getItem(position).getTitle();
@@ -105,7 +108,6 @@ public class CustomListAdapter extends ArrayAdapter<Card> {
 
         //download and display image from url
         imageLoader.displayImage(imgUrl, holder.image, options);
-
         return convertView;
     }
 

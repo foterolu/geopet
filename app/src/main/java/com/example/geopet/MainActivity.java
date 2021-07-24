@@ -107,14 +107,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         db.collection("post").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
                         if (task.isSuccessful()) {
                             ArrayList<String> links = new ArrayList<>();
-
                             for (QueryDocumentSnapshot document : task.getResult()) {
-
                                 String image = new String();
-
                                 System.out.println(document.getData().get("imagePath").getClass());
                                 if(document.getData().get("imagePath").getClass() == image.getClass() ){
                                     image = (String) document.getData().get("imagePath");
@@ -215,13 +211,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 return true;
             case R.id.action_search:
                 Toast.makeText(this, "boton busqueda", Toast.LENGTH_SHORT ).show();
-
-
                 return true;
-
-
-
-
         }
 
         return super.onOptionsItemSelected(item);
