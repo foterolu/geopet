@@ -8,15 +8,21 @@ public class Card implements Serializable {
     private String imgUrl;
     private String title;
     private String userId;
+    private String contacto, lat, lon, nombreMascota, raza;
     private ArrayList<String> Uris;
 
 
 
-    public Card(String imgUrl, String title, ArrayList<String> Uris, String userId) {
+    public Card(String imgUrl, String title, ArrayList<String> Uris, String userId, String contacto, String lat, String lon, String nombreMascota, String raza) {
         this.imgUrl = imgUrl;
         this.title = title;
         this.Uris = Uris;
         this.userId = userId;
+        this.contacto=contacto;
+        this.lat=lat;
+        this.lon=lon;
+        this.nombreMascota=nombreMascota;
+        this.raza=raza;
     }
     public String getUserId() {
         return userId;
@@ -41,6 +47,16 @@ public class Card implements Serializable {
     public String getTitle() {
         return title;
     }
+
+    public String getContacto(){ return contacto;}
+
+    public String getLat(){ return lat;}
+
+    public String getLon(){ return lon;}
+
+    public String getNombreMascota(){ return nombreMascota;}
+
+    public String getRaza(){ return raza;}
 
     public void setTitle(String title) {
         this.title = title;

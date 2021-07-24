@@ -15,9 +15,16 @@ import android.widget.Toast;
 
 import com.example.geopet.ChatMessage.Chat;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
 
 public class SinglePost extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private Toolbar toolbar;
+    ArrayList<String> fotos;
+    String contacto, lat, lon, nombreMascota, raza;
     TextView descripcion;
     TextView userID; //SOLO DE PRUEBA, LUEGO REMOVER
     Button mbtn;
@@ -58,6 +65,14 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
 
             }
         });
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        // Create a reference with an initial file path and name
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
 
 
     }
