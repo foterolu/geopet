@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                         @Override
                                         public void onSuccess(Uri uri) {
                                             links.add(uri.toString());
-                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza") ));
+                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza"), (String) document.getData().get("usuario")  ));
                                             System.out.println(links);
                                             CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             mListView.setAdapter(adapter);
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                             System.out.println(uri.toString());
                                             links.add(uri.toString());
                                             list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
-                                                   images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza") ));
+                                                   images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza"), (String) document.getData().get("usuario")  ));
                                             CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             mListView.setAdapter(adapter);
                                             //System.out.println(links);
@@ -213,7 +213,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         System.out.println("----------------Item Clickeado-------------------------");
         System.out.println(list.get(position).getUris());
-        Toast.makeText(this, list.get(position).getTitle(), Toast.LENGTH_SHORT ).show();
         Card card= list.get(position);
         Intent intent= new Intent(MainActivity.this, SinglePost.class);
         Bundle bundle= new Bundle();

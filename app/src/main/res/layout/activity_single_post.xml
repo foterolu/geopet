@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SinglePost">
     <include
         layout="@layout/toolbar_layout"
@@ -12,33 +13,19 @@
         >
     </include>
 
-    <TextView
-        android:id="@+id/descripcionId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="descripcion"
-        android:layout_below="@+id/toolbar"
-        android:textColor="#070707"
-        android:textSize="13sp"
 
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/userId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Prueba UWU"
-        android:textStyle="bold"
-        android:textColor="#070707"
-        android:textSize="13sp"
-        android:layout_below="@+id/descripcionId">
 
-    </TextView>
+
+
+
+
+
     <Button
         android:id="@+id/chatButton"
         android:text="Chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/userId">
+        android:layout_below="@+id/nombrePublicacionId">
 
     </Button>
 

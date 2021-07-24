@@ -23,9 +23,10 @@ import java.util.ArrayList;
 
 public class SinglePost extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private Toolbar toolbar;
+    String username;
     ArrayList<String> fotos;
-    String contacto, lat, lon, nombreMascota, raza;
-    TextView descripcion;
+    String contacto, lat, lon, raza;
+    TextView nombrePublicacion, descripcion;
     TextView userID; //SOLO DE PRUEBA, LUEGO REMOVER
     Button mbtn;
     String postUserId;
@@ -40,17 +41,18 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        descripcion= (TextView) findViewById(R.id.descripcionId);
-        userID = (TextView)findViewById(R.id.userId);
+        nombrePublicacion= (TextView) findViewById(R.id.nombrePublicacionId);
+        //descripcion= (TextView) findViewById(R.id.descripcionId);
         mbtn = findViewById(R.id.chatButton);
 
         Bundle cardSent= getIntent().getExtras();
         Card card=null;
         if (cardSent!=null){
             card= (Card) cardSent.getSerializable("card");
-            descripcion.setText(card.getTitle());
-            userID.setText(card.getUserId());
+            //nombrePublicacion.setText(card.getNombrePublicacion());
+            //descripcion.setText(card.getDescripcion());
+            //userID.setText(card.getUserId());
+            //username=card.getUsername();
         }
         String postUserId = card.getUserId();
         mbtn.setOnClickListener(new View.OnClickListener() {

@@ -5,24 +5,25 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Card implements Serializable {
-    private String imgUrl;
-    private String title;
+    private String imgUrl, username;
+    private String descripcion;
     private String userId;
-    private String contacto, lat, lon, nombreMascota, raza;
+    private String contacto, lat, lon, nombrePublicacion, raza;
     private ArrayList<String> Uris;
 
 
 
-    public Card(String imgUrl, String title, ArrayList<String> Uris, String userId, String contacto, String lat, String lon, String nombreMascota, String raza) {
+    public Card(String imgUrl, String descripcion, ArrayList<String> Uris, String userId, String contacto, String lat, String lon, String nombreMascota, String raza, String username) {
         this.imgUrl = imgUrl;
-        this.title = title;
+        this.descripcion = descripcion;
         this.Uris = Uris;
         this.userId = userId;
         this.contacto=contacto;
         this.lat=lat;
         this.lon=lon;
-        this.nombreMascota=nombreMascota;
+        this.nombrePublicacion=nombrePublicacion;
         this.raza=raza;
+        this.username=username;
     }
     public String getUserId() {
         return userId;
@@ -44,8 +45,8 @@ public class Card implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public String getTitle() {
-        return title;
+    public String getDescripcion() {
+        return descripcion;
     }
 
     public String getContacto(){ return contacto;}
@@ -54,11 +55,10 @@ public class Card implements Serializable {
 
     public String getLon(){ return lon;}
 
-    public String getNombreMascota(){ return nombreMascota;}
+    public String getNombrePublicacion(){ return nombrePublicacion;}
 
     public String getRaza(){ return raza;}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public String getUsername(){return username;}
+
 }
