@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
+
         /*Se incializa la app bar  */
         setContentView(R.layout.nav_activity_main);
         toolbar = findViewById(R.id.toolbar);
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                         @Override
                                         public void onSuccess(Uri uri) {
                                             links.add(uri.toString());
-                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId));
+                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza") ));
                                             System.out.println(links);
                                             CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             mListView.setAdapter(adapter);
@@ -146,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                             System.out.println(uri.toString());
                                             links.add(uri.toString());
                                             list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
-                                                   images,userId));
+                                                   images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza") ));
                                             CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             mListView.setAdapter(adapter);
                                             //System.out.println(links);
