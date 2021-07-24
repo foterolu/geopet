@@ -41,7 +41,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestPermissions();
+
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         searchView = findViewById(R.id.idSearchView);
@@ -73,23 +73,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         // on below line we are getting location from the
                         // location name and adding that location to address list.
                         addressList = geocoder.getFromLocationName(location, 1);
+                        while(addressList.size() == 0){
+                            addressList = geocoder.getFromLocationName(location, 1);
+                            System.out.println("----------------NULL LIST----------------------");
+                        }
+                        if(addressList.size() >0){
+                            Address address = addressList.get(0);
+
+                            // on below line we are creating a variable for our location
+                            // where we will add our locations latitude and longitude.
+                            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                            mMap.clear(); //añadir solo un marker
+
+                            // on below line we are adding marker to that position.
+                            mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+
+                            // below line is to animate camera to that position.
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                        }
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     // on below line we are getting the location
                     // from our list a first position.
-                    Address address = addressList.get(0);
 
-                    // on below line we are creating a variable for our location
-                    // where we will add our locations latitude and longitude.
-                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                    mMap.clear(); //añadir solo un marker
-
-                    // on below line we are adding marker to that position.
-                    mMap.addMarker(new MarkerOptions().position(latLng).title(location));
-
-                    // below line is to animate camera to that position.
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
                 }
                 return false;
             }
