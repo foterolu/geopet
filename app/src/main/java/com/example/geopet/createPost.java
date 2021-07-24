@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,6 +47,7 @@ import java.util.Map;
 
 public class createPost extends AppCompatActivity {
     EditText mnombre,mraza,mdescripcion,mcontacto;
+    TextView mlatlong;
     ListView Post;
     Button ingresar,btnbrowse, btnmap;
 
@@ -57,6 +61,7 @@ public class createPost extends AppCompatActivity {
     private Toolbar toolbar;
     String Imageuri;
     int Image_Request_Code = 7;
+    int Map_request_code = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +78,7 @@ public class createPost extends AppCompatActivity {
         mraza        = findViewById(R.id.raza);
         mdescripcion = findViewById(R.id.description);
         mcontacto    = findViewById(R.id.phone2);
+        mlatlong = findViewById(R.id.latlongtext);
         ingresar = findViewById(R.id.añadir);
         btnbrowse = (Button)findViewById(R.id.btnbrowse);
         btnmap = (Button)findViewById(R.id.btnmap);
@@ -98,8 +104,8 @@ public class createPost extends AppCompatActivity {
         btnmap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent fp=new Intent(getApplicationContext(),MapsActivity.class);
-                startActivity(fp);
+                Intent intent=new Intent(createPost.this,MapsActivity.class);
+                startActivityForResult(intent,Map_request_code);
             }
         });
 
@@ -107,12 +113,17 @@ public class createPost extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 String nombre      =  mnombre.getText().toString().trim();
                 String raza        = mraza.getText().toString().trim();
                 String descripcion = mdescripcion.getText().toString().trim();
                 String contacto    = mcontacto.getText().toString().trim();
+                String[] x = mlatlong.getText().toString().replaceAll("[()]","").split(",");
+                if(x.length != 2){
+                    mlatlong.setError("Lugar Requerido");
+                    return;
+                }
+                String lat = x[0];
+                String lon = x[1];
                 String path = System.currentTimeMillis() + "." + GetFileExtension(FilePathUri.get(0));
 
                 if(TextUtils.isEmpty(contacto)){
@@ -139,6 +150,8 @@ public class createPost extends AppCompatActivity {
                 post.put("descripcion",descripcion);
                 post.put("contacto",contacto);
                 post.put("usuario",user);
+                post.put("lat",lat);
+                post.put("long",lon);
 
                 UploadImage(post);
             }
@@ -153,6 +166,10 @@ public class createPost extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == Map_request_code && resultCode == RESULT_OK && data != null){
+            TextView text = findViewById(R.id.latlongtext);
+            text.setText(data.getStringExtra("value"));
+        }
 
 
         if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null) {

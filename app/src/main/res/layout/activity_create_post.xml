@@ -111,14 +111,28 @@
                 android:layout_weight="3"
                 android:text="Seleccionar Foto" />
         </LinearLayout>
-        <Button
-            android:id="@+id/btnmap"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:orientation="horizontal"
-            android:layout_weight="3"
-            android:text="Selecciona Lugar" />
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/latlongtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LatLong"
+                android:layout_gravity="center_vertical"/>
+            <Button
+                android:layout_marginLeft="20dp"
+                android:id="@+id/btnmap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_weight="3"
+                android:text="Selecciona Lugar"/>
+        </LinearLayout>
+
         <Button
             android:id="@+id/añadir"
             android:layout_width="wrap_content"

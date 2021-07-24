@@ -12,6 +12,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -37,6 +39,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ActivityMapsBinding binding;
     private FusedLocationProviderClient mFusedLocationClient;
     private SearchView searchView;
+    private double lat;
+    private double longi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         searchView = findViewById(R.id.idSearchView);
+        Button btnsendmap = findViewById(R.id.btnsendmap);
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -54,6 +60,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // when the map is ready to be used.
 
         // adding on query listener for our search view.
+
+        btnsendmap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String value = "("+Double.toString(lat) +","+ Double.toString(longi)+")";
+                System.out.println(value);
+                Intent intent = new Intent();
+                intent.putExtra("value", value);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -148,6 +166,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 @Override
                 public void onComplete(@NonNull @NotNull Task<Location> task) {
                     Location location = task.getResult();
+                    lat = location.getLatitude();
+                    longi = location.getLongitude();
                     LatLng sydney = new LatLng(location.getLatitude(), location.getLongitude());
                     //mMap.addMarker(new MarkerOptions().position(sydney).title("Ubicacion Actual"));
                     mMap.setMinZoomPreference(14);
@@ -160,6 +180,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onMapClick(@NonNull @NotNull LatLng latLng) {
                 System.out.println("------------------Map Clicked--------------------------");
+                lat = latLng.latitude;
+                longi = latLng.longitude;
                 mMap.clear();
                 mMap.addMarker(new MarkerOptions().position(latLng).title("Ultima vez visto"));
             }
