@@ -102,6 +102,15 @@
         android:hint="Email"
         android:inputType="textPersonName"
          />
+    <AutoCompleteTextView
+        android:id="@+id/Comuna"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Comuna"
+        android:layout_marginTop="12dp"/>
 
 
 
