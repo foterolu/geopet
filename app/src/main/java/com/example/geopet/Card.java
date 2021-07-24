@@ -1,6 +1,8 @@
 package com.example.geopet;
 
-public class Card {
+import java.io.Serializable;
+
+public class Card implements Serializable {
     private String imgUrl;
     private String title;
 

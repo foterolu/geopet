@@ -21,6 +21,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.geopet.SinglePost;
 import com.example.geopet.ui.gallery.GalleryFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,6 +32,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
+
 import com.google.firebase.storage.StorageReference;
 
 import org.jetbrains.annotations.NotNull;
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /*Se incializa el drawer */
         drawerLayout = findViewById(R.id.drawer_layout);
         final ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);//icono de drawer
 
@@ -217,7 +220,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        Toast.makeText(this, list.get(position).getTitle(), Toast.LENGTH_SHORT ).show();
+
+        Card card= list.get(position);
+        Intent intent= new Intent(MainActivity.this, SinglePost.class);
+
+        Bundle bundle= new Bundle();
+        bundle.putSerializable("card", card);
+        intent.putExtras(bundle);
+
+        startActivity(intent);
 
 
 
