@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private NavigationView navigationView;
     private  FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
+    private ArrayList<String> images = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mListView = (ListView) findViewById(R.id.listView);
 
 
-
+        //Se cargan datos a la vista, referencia a firestore
         db.collection("post").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -111,46 +112,55 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             ArrayList<String> links = new ArrayList<>();
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                ArrayList<String> images = new ArrayList<>();
-                                String image = new String();
-                                System.out.println("----------------VOY DE PANA----------------------");
-                                System.out.println(document.getData().get("imagePath").getClass());
-                                if(document.getData().get("imagePath").getClass() == image.getClass()){
 
+                                String image = new String();
+
+                                System.out.println(document.getData().get("imagePath").getClass());
+                                if(document.getData().get("imagePath").getClass() == image.getClass() ){
+                                    image = (String) document.getData().get("imagePath");
+                                    images.add(image);
                                     //System.out.println("images/" + (String) document.getData().get("imagePath"));
                                     StorageReference pathReference = storageRef.child("Images/" + document.getData().get("imagePath"));
-
                                     pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
-
                                             links.add(uri.toString());
-                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion")));
+                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images));
                                             System.out.println(links);
                                             CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             mListView.setAdapter(adapter);
+                                            images.clear();
                                         }
                                     });
-                                    System.out.println(links);
+
                                 }else{
                                     images = (ArrayList<String>)  document.getData().get("imagePath");
-                                    //System.out.println("images/" + (String) document.getData().get("imagePath"));
+                                    System.out.println(images);
                                     StorageReference pathReference = storageRef.child("Images/" + images.get(0));
+                                    System.out.println("Images/" + images.get(0));
                                     //String FirePath = "gs://geopet-9028c.appspot.com/" + "Images/"  +(String) document.getData().get("imagePath");
                                     //System.out.println(FirePath);
+                                    System.out.println("----------------Dentro del For----------------");
                                     pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
-
+                                            System.out.println("----------------Dentro del OnSuccess----------------");
                                             links.add(uri.toString());
-                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion")));
-                                            System.out.println(links);
-                                            CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
-                                            mListView.setAdapter(adapter);
+                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),(ArrayList<String>)  document.getData().get("imagePath")));
+
+                                            //System.out.println(links);
+
                                         }
                                     });
-                                    System.out.println(links);
+                                        //System.out.println(links);
+
+                                    //error cuando no hay foto
+
+
                                 }
+
+                                CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+                                mListView.setAdapter(adapter);
 
 /*
 
@@ -230,6 +240,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         System.out.println("----------------Item Clickeado-------------------------");
+        System.out.println(list.get(position).getUris());
         Toast.makeText(this, list.get(position).getTitle(), Toast.LENGTH_SHORT ).show();
         Card card= list.get(position);
         Intent intent= new Intent(MainActivity.this, SinglePost.class);

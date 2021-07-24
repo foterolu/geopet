@@ -152,12 +152,8 @@ public class createPost extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode,Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-
-
-
         if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null) {
             if(data.getClipData() != null){
-
                 for(int i = 0; i < data.getClipData().getItemCount() ; i++) {
                     System.out.println("------------------------POR ACA-----------------------------------");
                     Uri uri = data.getClipData().getItemAt(i).getUri();
@@ -165,7 +161,6 @@ public class createPost extends AppCompatActivity {
                     FilePathUri.add(uri);
                 }
                 System.out.println(FilePathUri);
-
             }else {
                 try {
                     FilePathUri.add(data.getData());
@@ -173,7 +168,6 @@ public class createPost extends AppCompatActivity {
                     imgview.setImageBitmap(bitmap);
                 }
                 catch (IOException e){
-
                     System.out.println("Error al cargar la imagen");
                 }
             }
