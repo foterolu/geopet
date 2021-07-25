@@ -95,10 +95,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
                 if(item.getItemId() == R.id.nav_cuenta){
 
-                    startActivity(new Intent(getApplicationContext(),createPost.class));
+                    Toast.makeText(MainActivity.this, "Cuenta clicked", Toast.LENGTH_SHORT).show();
+                }
+                if(item.getItemId() == R.id.nav_chat){
+                    startActivity(new Intent(getApplicationContext(),ChatViews.class));
+                }
+                if(item.getItemId() == R.id.nav_logout){
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(getApplicationContext(),Login.class));
+                    finish();
                 }
                 return false;
             }
+
+
         });
 
 
@@ -205,10 +215,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
-            case R.id.action_search:
-                Toast.makeText(this, "boton busqueda", Toast.LENGTH_SHORT ).show();
-                return true;
+            case R.id.chats_view:
+                startActivity(new Intent(getApplicationContext(),ChatViews.class));
         }
+
 
         return super.onOptionsItemSelected(item);
     }

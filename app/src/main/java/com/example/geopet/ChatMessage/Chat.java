@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -26,12 +28,16 @@ import org.jetbrains.annotations.NotNull;
 
 public class Chat extends AppCompatActivity {
     private FirebaseListAdapter<ChatMessage> adapter;
+    private FirebaseAuth fAuth;
     private String chatId;
+    String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+        fAuth        = FirebaseAuth.getInstance();
+        userId = fAuth.getCurrentUser().getUid();
         Intent intent = getIntent();
         chatId = intent.getStringExtra("chatId");
         Toast.makeText(this,
@@ -53,7 +59,7 @@ public class Chat extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference chat_ref = database.getReference("chats");
                 FirebaseAuth fAuth        = FirebaseAuth.getInstance();
-                String userId = fAuth.getCurrentUser().getUid();
+
                 ChatMessage message = new ChatMessage(input.getText().toString(),userId);
                 chat_ref.child(chatId).push().setValue(message);
             /* FirebaseDatabase.getInstance()
@@ -85,17 +91,35 @@ public class Chat extends AppCompatActivity {
             @Override
             protected void populateView(View v, ChatMessage model, int position) {
                 // Get references to the views of message.xml
-                TextView messageText = (TextView)v.findViewById(R.id.message_text);
-                TextView messageUser = (TextView)v.findViewById(R.id.message_user);
-                TextView messageTime = (TextView)v.findViewById(R.id.message_time);
+                if(model.getMessageUser().compareTo(userId) == 0) {
+                    TextView messageText = (TextView) v.findViewById(R.id.message_user);
+                    //TextView messageTime = (TextView) v.findViewById(R.id.message_time);
+                    messageText.setGravity(Gravity.RIGHT);
+                    messageText.setBackground(v.getResources().getDrawable(R.drawable.background_right));
 
-                // Set their text
-                messageText.setText(model.getMessageText());
-                messageUser.setText(model.getMessageUser());
+                    // Set their text
+                    messageText.setText(model.getMessageText());
 
-                // Format the date before showing it
-                messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
-                        model.getMessageTime()));
+                    messageText.setTextColor(Color.WHITE);
+                    // Format the date before showing it
+                    //messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
+                      //      model.getMessageTime()));
+                }else{
+
+                    TextView messageText = (TextView) v.findViewById(R.id.message_user);
+                    //TextView messageTime = (TextView) v.findViewById(R.id.message_time);
+                    messageText.setGravity(Gravity.LEFT);
+                    messageText.setBackground(v.getResources().getDrawable(R.drawable.background_left));
+
+                    // Set their text
+                    messageText.setTextColor(Color.BLACK);
+                    messageText.setText(model.getMessageText());
+
+
+                    // Format the date before showing it
+                    //messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
+                     //       model.getMessageTime()));
+                }
             }
         };
 

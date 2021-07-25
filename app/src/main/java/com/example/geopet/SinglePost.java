@@ -74,10 +74,16 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
             public void onClick(View v) {
                 FirebaseAuth fAuth        = FirebaseAuth.getInstance();
                 String userId = fAuth.getCurrentUser().getUid();
-                String result = setOneToOneChat(userId,postUserId);
-                Intent intent = new Intent(getApplicationContext(), Chat.class);
-                intent.putExtra("chatId",result);
-                startActivity(intent);
+                if(postUserId.compareTo(userId) == 0){
+                    Toast.makeText(SinglePost.this, "Eres el dueño de la publicación", Toast.LENGTH_SHORT ).show();
+                }else{
+                    String result = setOneToOneChat(userId,postUserId);
+                    Intent intent = new Intent(getApplicationContext(), Chat.class);
+                    intent.putExtra("chatId",result);
+                    startActivity(intent);
+
+                }
+
 
             }
         });
