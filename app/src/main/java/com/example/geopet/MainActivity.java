@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,6 +39,7 @@ import com.google.firebase.storage.StorageReference;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private static final String TAG = "MainActivity";
@@ -49,6 +51,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private  FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private ArrayList<String> images = new ArrayList<>();
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private StorageReference storageRef = storage.getReference();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CustomListAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,11 +71,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         }
         // Create a storage reference from our app
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-       // Create a reference with an initial file path and name
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+       // Create a reference with an initial file path and name
 
 
 
@@ -127,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                             links.add(uri.toString());
                                             list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza"), (String) document.getData().get("usuario"), (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")  ));
                                             System.out.println(links);
-                                            CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+                                            adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             mListView.setAdapter(adapter);
                                             adapter.notifyDataSetChanged();
                                             images.clear();
@@ -156,9 +159,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                             System.out.println(uri.toString());
                                             links.add(uri.toString());
                                             list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
-                                                   images,userId, contacto,lat, lon, nombre, raza, usuario, (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")  ));
-                                            CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
-                                            adapter.notifyDataSetChanged();
+                                                   images,userId, contacto,lat, lon, nombre, raza, usuario,
+                                                    (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")  ));
+                                            adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             mListView.setAdapter(adapter);
 
                                             //System.out.println(links);
@@ -176,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
-                });
+        });
         mListView.deferNotifyDataSetChanged();
         mListView.setOnItemClickListener(this);
 
@@ -215,6 +218,104 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater= getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
+
+        SearchView.OnQueryTextListener reader = new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                    list.clear();
+                    adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+                    mListView.setAdapter(adapter);
+                    db.collection("post").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                int i = 0;
+                                ArrayList<String> links = new ArrayList<>();
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    if (document.getData().get("comuna").toString().contains(query) || query.length() == 0){
+                                        String image = new String();
+                                        if(document.getData().get("imagePath").getClass() == image.getClass() ){
+                                            image = (String) document.getData().get("imagePath");
+                                            String userId = (String) document.getData().get("userId");
+                                            images.add(image);
+                                            //System.out.println("images/" + (String) document.getData().get("imagePath"));
+                                            StorageReference pathReference = storageRef.child("Images/" + document.getData().get("imagePath"));
+                                            pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                @Override
+                                                public void onSuccess(Uri uri) {
+
+                                                    links.add(uri.toString());
+                                                    list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza"), (String) document.getData().get("usuario"), (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")  ));
+                                                    System.out.println(links);
+                                                    adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+                                                    //mListView.setAdapter(adapter);
+                                                    images.clear();
+                                                }
+                                            });
+                                        }else{
+                                            images = (ArrayList<String>)  document.getData().get("imagePath");
+                                            String userId = (String) document.getData().get("userId");
+                                            String contacto = (String) document.getData().get("contacto");
+                                            String lat = (String) document.getData().get("lat");
+                                            String lon = (String) document.getData().get("lon");
+                                            String nombre = (String) document.getData().get("nombre");
+                                            String raza = (String) document.getData().get("raza");
+                                            String usuario = (String) document.getData().get("usuario");
+                                            System.out.println(images);
+                                            StorageReference pathReference = storageRef.child("Images/" + images.get(0));
+                                            System.out.println("Images/" + images.get(0));
+                                            //String FirePath = "gs://geopet-9028c.appspot.com/" + "Images/"  +(String) document.getData().get("imagePath");
+                                            //System.out.println(FirePath);
+                                            System.out.println("----------------Dentro del For----------------");
+                                            pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                @Override
+                                                public void onSuccess(Uri uri) {
+                                                    System.out.println("----------------Dentro del OnSuccess----------------");
+                                                    System.out.println(uri.toString());
+                                                    links.add(uri.toString());
+                                                    list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
+                                                            images,userId, contacto,lat, lon, nombre, raza, usuario, (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")  ));
+                                                    adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+                                                    mListView.setAdapter(adapter);
+
+                                                    //System.out.println(links);
+
+                                                }
+                                            });
+                                            //System.out.println(links);
+                                            //error cuando no hay foto
+                                        }
+                                    }
+                                }
+                            } else {
+                                Log.d(TAG, "Error getting documents: ", task.getException());
+                            }
+                        }
+                    });
+                return false;
+            }
+        };
+
+        MenuItem.OnActionExpandListener onActionExpandListenervar = new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                return false;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                return false;
+            }
+        };
+        menu.findItem(R.id.action_search).setOnActionExpandListener(onActionExpandListenervar);
+        SearchView searchView= (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setQueryHint("Ingresa Comuna...");
+        searchView.setOnQueryTextListener(reader);
         return super.onCreateOptionsMenu(menu);
     }
 
