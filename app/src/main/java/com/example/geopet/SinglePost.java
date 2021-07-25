@@ -58,10 +58,10 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
             System.out.println("lolardo Xd" +card.getNombrePublicacion());
             nombrePublicacion.setText(card.getNombrePublicacion());
             descripcion.setText(card.getDescripcion());
-            contacto.setText(card.getContacto());
-            raza.setText(card.getRaza());
-            comuna.setText(card.getComuna());
-            tipoAnimal.setText(card.getTipoAnimal());
+            contacto.setText("Contacto: "+card.getContacto());
+            raza.setText("Raza animal: "+card.getRaza());
+            comuna.setText("Comuna: "+card.getComuna());
+            tipoAnimal.setText("Tipo animal encontrado: "+card.getTipoAnimal());
 
 
 
