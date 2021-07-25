@@ -154,8 +154,8 @@ public class Register extends AppCompatActivity {
                             user.put("email",email);
                             user.put("comuna",comuna);
                             FirebaseFirestore db = FirebaseFirestore.getInstance();
-                            //String Userid =fAuth.getCurrentUser().getUid();
-                            db.collection("user").document(email).set(user);
+                            String Userid =fAuth.getCurrentUser().getUid();
+                            db.collection("user").document(Userid).set(user);
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
                         }else{

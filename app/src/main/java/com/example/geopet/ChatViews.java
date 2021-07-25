@@ -30,10 +30,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ChatViews extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private FirebaseDatabase database;
@@ -46,6 +52,8 @@ public class ChatViews extends AppCompatActivity implements AdapterView.OnItemCl
     private ArrayList<String> chatKeysUser= new ArrayList<>();
     private ArrayAdapter<String> mAdapter;
     private ListView ChatsListView;
+    private String otherUser;
+    private ArrayList<String> keyChat = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,11 +75,42 @@ public class ChatViews extends AppCompatActivity implements AdapterView.OnItemCl
                     String key = dsp.getKey();
 
 
+
                     if(key.contains(userId)){
-                        chatKeysUser.add(key);
                         System.out.println("Chat de usuario");
-                        mAdapter = new ArrayAdapter<String>(ChatViews.this, R.layout.message,R.id.show_message_left,chatKeysUser);
-                        ChatsListView.setAdapter(mAdapter);
+                        keyChat.add(key);
+                        List<String> lol = Arrays.asList(key.split(userId));
+
+
+                        if(lol != null){
+                            System.out.println(lol);
+                            if(lol.get(0).isEmpty()){
+                                System.out.println("-----------------------0 Null-----------------");
+                                otherUser = lol.get(1);
+                                System.out.println(otherUser);
+                            }
+                            else{
+                                System.out.println("-----------------------1 Null-----------------");
+                                otherUser = lol.get(0);
+                            }
+
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            db.collection("user").document(otherUser).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                                    String email = task.getResult().getString("email");
+                                    System.out.println(email);
+                                    chatKeysUser.add(email);
+                                    mAdapter = new ArrayAdapter<String>(ChatViews.this, R.layout.message,R.id.show_message_left,chatKeysUser);
+                                    ChatsListView.setAdapter(mAdapter);
+                                }
+                            });
+                        }
+
+
+
+
+
                     }
 
                 }
@@ -96,7 +135,7 @@ public class ChatViews extends AppCompatActivity implements AdapterView.OnItemCl
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String result = chatKeysUser.get(position);
+        String result = keyChat.get(position);
         Intent intent = new Intent(getApplicationContext(), Chat.class);
         intent.putExtra("chatId",result);
         startActivity(intent);
