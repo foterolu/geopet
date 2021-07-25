@@ -13,11 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.geopet.R;
-import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
@@ -25,39 +26,22 @@ import org.jetbrains.annotations.NotNull;
 
 public class Chat extends AppCompatActivity {
     private FirebaseListAdapter<ChatMessage> adapter;
+    private String chatId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
         Intent intent = getIntent();
-        String chatId = intent.getStringExtra("chatId");
+        chatId = intent.getStringExtra("chatId");
         Toast.makeText(this,
                 chatId,
                 Toast.LENGTH_LONG)
                 .show();
 
-        if(FirebaseAuth.getInstance().getCurrentUser() == null) {
-            // Start sign in/sign up activity
-            startActivityForResult(
-                    AuthUI.getInstance()
-                            .createSignInIntentBuilder()
-                            .build(),
-                    4
-            );
-        } else {
-            // User is already signed in. Therefore, display
-            // a welcome Toast
-            Toast.makeText(this,
-                    "Welcome " + FirebaseAuth.getInstance()
-                            .getCurrentUser()
-                            .getDisplayName(),
-                    Toast.LENGTH_LONG)
-                    .show();
 
-            // Load chat room contents
-            displayChatMessages();
-        }
+        displayChatMessages();
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,14 +49,21 @@ public class Chat extends AppCompatActivity {
 
                 // Read the input field and push a new instance
                 // of ChatMessage to the Firebase database
-                FirebaseDatabase.getInstance()
+                System.out.println("-------------------AcaaaUWU----------------");
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference chat_ref = database.getReference("chats");
+                FirebaseAuth fAuth        = FirebaseAuth.getInstance();
+                String userId = fAuth.getCurrentUser().getUid();
+                ChatMessage message = new ChatMessage(input.getText().toString(),userId);
+                chat_ref.child(chatId).push().setValue(message);
+            /* FirebaseDatabase.getInstance()
                         .getReference()
                         .push()
                         .setValue(new ChatMessage(input.getText().toString(),
                                 FirebaseAuth.getInstance()
                                         .getCurrentUser()
                                         .getDisplayName())
-                        );
+                        );*/
                 // Clear the input
                 input.setText("");
             }
@@ -82,7 +73,7 @@ public class Chat extends AppCompatActivity {
 
 
     private void displayChatMessages() {
-        Query query = FirebaseDatabase.getInstance().getReference().child("chats");
+        Query query = FirebaseDatabase.getInstance().getReference("chats").child(chatId);
         ListView listOfMessages  = (ListView)findViewById(R.id.list_of_messages);
         FirebaseListOptions options = new FirebaseListOptions.Builder<ChatMessage>().
                 setQuery(query,ChatMessage.class).setLayout(R.layout.message).build();
@@ -109,6 +100,7 @@ public class Chat extends AppCompatActivity {
         };
 
         listOfMessages.setAdapter(adapter);
+        adapter.startListening();
 
 
 

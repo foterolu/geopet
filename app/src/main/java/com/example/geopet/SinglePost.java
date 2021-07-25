@@ -68,11 +68,7 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
             }
         });
 
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        // Create a reference with an initial file path and name
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
 

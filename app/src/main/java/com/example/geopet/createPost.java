@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
@@ -115,7 +116,7 @@ public class createPost extends AppCompatActivity {
     String Imageuri;
     int Image_Request_Code = 7;
     int Map_request_code = 1;
-
+    String userEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,9 +146,9 @@ public class createPost extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference("Images");
         databaseReference = FirebaseDatabase.getInstance().getReference("Images");
 
+        db = FirebaseFirestore.getInstance();
         mComuna.setThreshold(1);
         mComuna.setAdapter(adapter);
-        db = FirebaseFirestore.getInstance();
 
         btnbrowse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -340,7 +341,14 @@ public class createPost extends AppCompatActivity {
                 public void onSuccess(DocumentReference documentReference) {
                     Log.d("tagy","Anuncio ingresado");
                     Toast.makeText(createPost.this, "Anuncio Creado", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            // Actions to do after 5 seconds
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        }
+                    }, 5000);
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override

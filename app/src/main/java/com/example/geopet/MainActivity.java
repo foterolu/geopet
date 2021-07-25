@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            int i = 0;
                             ArrayList<String> links = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 String image = new String();
@@ -122,11 +123,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                     pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
+
                                             links.add(uri.toString());
                                             list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza"), (String) document.getData().get("usuario")  ));
                                             System.out.println(links);
                                             CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             mListView.setAdapter(adapter);
+                                            adapter.notifyDataSetChanged();
                                             images.clear();
                                         }
                                     });
@@ -134,6 +137,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 }else{
                                     images = (ArrayList<String>)  document.getData().get("imagePath");
                                     String userId = (String) document.getData().get("userId");
+                                    String contacto = (String) document.getData().get("contacto");
+                                    String lat = (String) document.getData().get("lat");
+                                    String lon = (String) document.getData().get("lon");
+                                    String nombre = (String) document.getData().get("nombre");
+                                    String raza = (String) document.getData().get("raza");
+                                    String usuario = (String) document.getData().get("usuario");
                                     System.out.println(images);
                                     StorageReference pathReference = storageRef.child("Images/" + images.get(0));
                                     System.out.println("Images/" + images.get(0));
@@ -147,18 +156,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                             System.out.println(uri.toString());
                                             links.add(uri.toString());
                                             list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
-                                                   images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza"), (String) document.getData().get("usuario")  ));
+                                                   images,userId, contacto,lat, lon, nombre, raza, usuario  ));
                                             CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+                                            adapter.notifyDataSetChanged();
                                             mListView.setAdapter(adapter);
+
                                             //System.out.println(links);
 
                                         }
                                     });
                                         //System.out.println(links);
-
                                     //error cuando no hay foto
-
-
                                 }
 
                             }
@@ -169,7 +177,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         }
                     }
                 });
+        mListView.deferNotifyDataSetChanged();
         mListView.setOnItemClickListener(this);
+
 
     }
 
