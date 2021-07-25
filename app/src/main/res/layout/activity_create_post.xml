@@ -90,6 +90,16 @@
             android:hint="Número de contacto"
             android:inputType="phone" />
 
+        <AutoCompleteTextView
+            android:id="@+id/Comuna2"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Comuna"
+            android:layout_marginTop="12dp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
