@@ -50,8 +50,18 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="80dp"
             android:layout_marginRight="10dp"
-            android:hint="Nombre"
+            android:hint="Nombre publicacion"
             android:autofillHints="Cachupin"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/tipoAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="10dp"
+            android:hint="Tipo animal encontrado"
             android:inputType="textPersonName" />
 
         <EditText
@@ -63,6 +73,7 @@
             android:layout_marginRight="10dp"
             android:hint="Raza"
             android:inputType="textPersonName" />
+
 
 
         <EditText

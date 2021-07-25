@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +51,7 @@ import java.util.List;
 import java.util.Map;
 
 public class createPost extends AppCompatActivity {
-    EditText mnombre,mraza,mdescripcion,mcontacto;
+    EditText mnombre,mraza,mdescripcion,mcontacto, mTipoAnimal;
     TextView mlatlong;
     AutoCompleteTextView mComuna;
     ListView Post;
@@ -130,6 +131,8 @@ public class createPost extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+
+
         FilePathUri = new ArrayList<>();;
         mnombre      = findViewById(R.id.name);
         mraza        = findViewById(R.id.raza);
@@ -137,6 +140,7 @@ public class createPost extends AppCompatActivity {
         mcontacto    = findViewById(R.id.phone2);
         mlatlong = findViewById(R.id.latlongtext);
         mComuna      = findViewById(R.id.Comuna2);
+        mTipoAnimal= findViewById(R.id.tipoAnimal);
         ingresar = findViewById(R.id.añadir);
         btnbrowse = (Button)findViewById(R.id.btnbrowse);
         btnmap = (Button)findViewById(R.id.btnmap);
@@ -178,6 +182,7 @@ public class createPost extends AppCompatActivity {
                 String descripcion = mdescripcion.getText().toString().trim();
                 String contacto    = mcontacto.getText().toString().trim();
                 String comuna = mComuna.getText().toString().trim();
+                String tipoAnimal= mTipoAnimal.getText().toString().trim();
                 String[] x = mlatlong.getText().toString().replaceAll("[()]","").split(",");
 
                 if (!(comunaList.contains(comuna))){
@@ -221,6 +226,7 @@ public class createPost extends AppCompatActivity {
                 post.put("lat",lat);
                 post.put("long",lon);
                 post.put("comuna",comuna);
+                post.put("tipoAnimal",tipoAnimal);
 
                 UploadImage(post);
             }

@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                         public void onSuccess(Uri uri) {
 
                                             links.add(uri.toString());
-                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza"), (String) document.getData().get("usuario")  ));
+                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza"), (String) document.getData().get("usuario"), (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")  ));
                                             System.out.println(links);
                                             CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             mListView.setAdapter(adapter);
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                             System.out.println(uri.toString());
                                             links.add(uri.toString());
                                             list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
-                                                   images,userId, contacto,lat, lon, nombre, raza, usuario  ));
+                                                   images,userId, contacto,lat, lon, nombre, raza, usuario, (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")  ));
                                             CustomListAdapter adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             adapter.notifyDataSetChanged();
                                             mListView.setAdapter(adapter);

@@ -8,12 +8,12 @@ public class Card implements Serializable {
     private String imgUrl, username;
     private String descripcion;
     private String userId;
-    private String contacto, lat, lon, nombrePublicacion, raza;
+    private String contacto, lat, lon, nombrePublicacion, raza, comuna, tipoAnimal;
     private ArrayList<String> Uris;
 
 
 
-    public Card(String imgUrl, String descripcion, ArrayList<String> Uris, String userId, String contacto, String lat, String lon, String nombreMascota, String raza, String username) {
+    public Card(String imgUrl, String descripcion, ArrayList<String> Uris, String userId, String contacto, String lat, String lon, String nombrePublicacion, String raza, String username,String comuna, String tipoAnimal) {
         this.imgUrl = imgUrl;
         this.descripcion = descripcion;
         this.Uris = Uris;
@@ -24,6 +24,8 @@ public class Card implements Serializable {
         this.nombrePublicacion=nombrePublicacion;
         this.raza=raza;
         this.username=username;
+        this.comuna=comuna;
+        this.tipoAnimal=tipoAnimal;
     }
     public String getUserId() {
         return userId;
@@ -60,5 +62,9 @@ public class Card implements Serializable {
     public String getRaza(){ return raza;}
 
     public String getUsername(){return username;}
+
+    public String getComuna(){return comuna;}
+
+    public String getTipoAnimal(){return tipoAnimal;}
 
 }

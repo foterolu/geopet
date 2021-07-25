@@ -25,8 +25,8 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
     private Toolbar toolbar;
     String username;
     ArrayList<String> fotos;
-    String contacto, lat, lon, raza;
-    TextView nombrePublicacion, descripcion;
+    String lat, lon;
+    TextView nombrePublicacion, descripcion, raza, contacto, comuna, tipoAnimal;
     TextView userID; //SOLO DE PRUEBA, LUEGO REMOVER
     Button mbtn;
     String postUserId;
@@ -42,15 +42,29 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         nombrePublicacion= (TextView) findViewById(R.id.nombrePublicacionId);
-        //descripcion= (TextView) findViewById(R.id.descripcionId);
+        descripcion= (TextView) findViewById(R.id.descripcionId);
+        contacto= (TextView) findViewById(R.id.contactoID);
         mbtn = findViewById(R.id.chatButton);
+        raza= findViewById(R.id.razaId);
+        comuna=findViewById(R.id.comunaId);
+        tipoAnimal=findViewById(R.id.tipoAnimalId);
+
+
 
         Bundle cardSent= getIntent().getExtras();
         Card card=null;
         if (cardSent!=null){
             card= (Card) cardSent.getSerializable("card");
-            //nombrePublicacion.setText(card.getNombrePublicacion());
-            //descripcion.setText(card.getDescripcion());
+            System.out.println("lolardo Xd" +card.getNombrePublicacion());
+            nombrePublicacion.setText(card.getNombrePublicacion());
+            descripcion.setText(card.getDescripcion());
+            contacto.setText(card.getContacto());
+            raza.setText(card.getRaza());
+            comuna.setText(card.getComuna());
+            tipoAnimal.setText(card.getTipoAnimal());
+
+
+
             //userID.setText(card.getUserId());
             //username=card.getUsername();
         }
