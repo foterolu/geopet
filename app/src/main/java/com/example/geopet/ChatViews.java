@@ -70,7 +70,7 @@ public class ChatViews extends AppCompatActivity implements AdapterView.OnItemCl
                     if(key.contains(userId)){
                         chatKeysUser.add(key);
                         System.out.println("Chat de usuario");
-                        mAdapter = new ArrayAdapter<String>(ChatViews.this, R.layout.message,R.id.message_user,chatKeysUser);
+                        mAdapter = new ArrayAdapter<String>(ChatViews.this, R.layout.message,R.id.show_message_left,chatKeysUser);
                         ChatsListView.setAdapter(mAdapter);
                     }
 

@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
@@ -92,26 +94,28 @@ public class Chat extends AppCompatActivity {
             protected void populateView(View v, ChatMessage model, int position) {
                 // Get references to the views of message.xml
                 if(model.getMessageUser().compareTo(userId) == 0) {
-                    TextView messageText = (TextView) v.findViewById(R.id.message_user);
+                    TextView messageText = (TextView) v.findViewById(R.id.show_message_right);
                     //TextView messageTime = (TextView) v.findViewById(R.id.message_time);
-                    messageText.setGravity(Gravity.RIGHT);
-                    messageText.setBackground(v.getResources().getDrawable(R.drawable.background_right));
+
+
+                    //messageText.setBackground(v.getResources().getDrawable(R.drawable.background_right));
 
                     // Set their text
                     messageText.setText(model.getMessageText());
-
+                    messageText.setPadding(15,15,15,15);
                     messageText.setTextColor(Color.WHITE);
                     // Format the date before showing it
                     //messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
                       //      model.getMessageTime()));
                 }else{
 
-                    TextView messageText = (TextView) v.findViewById(R.id.message_user);
+                    TextView messageText = (TextView) v.findViewById(R.id.show_message_left);
                     //TextView messageTime = (TextView) v.findViewById(R.id.message_time);
-                    messageText.setGravity(Gravity.LEFT);
-                    messageText.setBackground(v.getResources().getDrawable(R.drawable.background_left));
+                    //messageText.setBackground(v.getResources().getDrawable(R.drawable.background_left));
 
                     // Set their text
+
+                    messageText.setPadding(15,15,15,15);
                     messageText.setTextColor(Color.BLACK);
                     messageText.setText(model.getMessageText());
 
@@ -129,4 +133,5 @@ public class Chat extends AppCompatActivity {
 
 
     }
+
 }

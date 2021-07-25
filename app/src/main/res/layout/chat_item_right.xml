@@ -9,7 +9,7 @@
         android:layout_alignParentRight="true"
         >
         <TextView
-            android:id="@+id/show_message"
+            android:id="@+id/show_message_right"
             android:padding="8dp"
             android:text="Hello"
             android:textColor="@color/white"
