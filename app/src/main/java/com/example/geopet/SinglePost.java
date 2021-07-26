@@ -32,6 +32,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class SinglePost extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private static final String TAG = "SinglePost";
@@ -39,10 +40,12 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
     private FirebaseStorage storage = FirebaseStorage.getInstance();
     private StorageReference storageRef = storage.getReference();
     private Toolbar toolbar;
+    Button botonMapa;
     GridView picsGridView;
     String username;
     ArrayList<String> fotos, storagePhotos=new ArrayList<String>();
-    String lat, lon;
+    String lat;
+    String lon;
     TextView nombrePublicacion, descripcion, raza, contacto, comuna, tipoAnimal;
     TextView userID; //SOLO DE PRUEBA, LUEGO REMOVER
     Button mbtn;
@@ -69,6 +72,9 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
         raza= findViewById(R.id.razaId);
         comuna=findViewById(R.id.comunaId);
         tipoAnimal=findViewById(R.id.tipoAnimalId);
+        botonMapa=findViewById(R.id.mapButton);
+
+
 
 
 
@@ -84,6 +90,8 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
             comuna.setText("Comuna: "+card.getComuna());
             tipoAnimal.setText("Tipo animal encontrado: "+card.getTipoAnimal());
             fotos=card.getUris();
+            lat=card.getLat();
+            lon=card.getLon();
             System.out.println("uris enviadas:  "+fotos);
 
 
@@ -191,6 +199,17 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
 
 
 
+    }
+
+    public void desplegarMapa(View view) {
+        // Do something in response to button click
+        System.out.println("Latitud: "+lat + "Longitud: "+lon);
+        double lat1=Double.parseDouble(lat);
+        double lon1=Double.parseDouble(lon);
+        System.out.println(lat+"funcionara et wea latitu xd");
+        String uri = String.format(Locale.ENGLISH, "geo:%f,%f", lat1, lon1);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        startActivity(intent);
     }
 
 

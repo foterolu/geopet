@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                                     (String) document.getData().get("descripcion"),
                                                     images,userId,
                                                     (String) document.getData().get("contacto"),
-                                                    (String) document.getData().get("lat"), (String) document.getData().get("lon"),
+                                                    (String) document.getData().get("lat"), (String) document.getData().get("long"),
                                                     (String) document.getData().get("nombre"), (String) document.getData().get("raza"),
                                                     (String) document.getData().get("usuario"), (String) document.getData().get("comuna"),
                                                     (String) document.getData().get("tipoAnimal")  );
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                     String userId = (String) document.getData().get("userId");
                                     String contacto = (String) document.getData().get("contacto");
                                     String lat = (String) document.getData().get("lat");
-                                    String lon = (String) document.getData().get("lon");
+                                    String lon = (String) document.getData().get("long");
                                     String nombre = (String) document.getData().get("nombre");
                                     String raza = (String) document.getData().get("raza");
                                     String usuario = (String) document.getData().get("usuario");

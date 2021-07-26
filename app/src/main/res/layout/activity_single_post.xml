@@ -82,25 +82,43 @@
         app:delay="0"
         app:period="3000"
         app:placeholder="@color/black"
-
         app:corner_radius="20"
     />
 
 
-    
 
 
 
-
-
-
-    <Button
-        android:id="@+id/chatButton"
-        android:text="Chat"
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_below="@id/fotosSlider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/fotosSlider">
+        android:orientation="horizontal" >
 
-    </Button>
+        <Button
+            android:id="@+id/mapButton"
+            android:onClick="desplegarMapa"
+            android:text="Ver mapa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Button>
+
+        <Button
+            android:id="@+id/chatButton"
+            android:text="Chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Button>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>
