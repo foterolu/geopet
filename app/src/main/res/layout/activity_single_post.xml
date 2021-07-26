@@ -62,8 +62,6 @@
 
 
 
-
-
     <TextView
         android:id="@+id/contactoID"
         android:layout_below="@+id/comunaId"
@@ -75,17 +73,26 @@
         android:textStyle="bold" />
 
 
+    <GridView
+        android:id="@+id/picsGridView"
+        android:layout_below="@+id/contactoID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:verticalSpacing="10dp">
 
 
-
-
+    </GridView>
 
     <Button
         android:id="@+id/chatButton"
         android:text="Chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/contactoID">
+        android:layout_below="@+id/picsGridView">
 
     </Button>
 

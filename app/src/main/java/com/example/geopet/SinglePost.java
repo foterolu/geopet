@@ -1,30 +1,44 @@
 package com.example.geopet;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.geopet.ChatMessage.Chat;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 public class SinglePost extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    private static final String TAG = "SinglePost";
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private StorageReference storageRef = storage.getReference();
     private Toolbar toolbar;
+    GridView picsGridView;
     String username;
-    ArrayList<String> fotos;
+    ArrayList<String> fotos, storagePhotos=new ArrayList<String>();
     String lat, lon;
     TextView nombrePublicacion, descripcion, raza, contacto, comuna, tipoAnimal;
     TextView userID; //SOLO DE PRUEBA, LUEGO REMOVER
@@ -38,9 +52,16 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        picsGridView= (GridView) findViewById(R.id.picsGridView);
+        picsGridView.setAdapter(new GridImageAdapter(this));
+
+
+
+
+
         nombrePublicacion= (TextView) findViewById(R.id.nombrePublicacionId);
         descripcion= (TextView) findViewById(R.id.descripcionId);
         contacto= (TextView) findViewById(R.id.contactoID);
@@ -62,6 +83,9 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
             raza.setText("Raza animal: "+card.getRaza());
             comuna.setText("Comuna: "+card.getComuna());
             tipoAnimal.setText("Tipo animal encontrado: "+card.getTipoAnimal());
+            fotos=card.getUris();
+            System.out.println("uris enviadas:  "+fotos);
+
 
 
 
@@ -87,6 +111,48 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
 
             }
         });
+
+        //Se cargan datos a la vista, referencia a firestore
+
+        for (int i=0; i<fotos.size(); i=i+1) {
+            int finalI = i;
+            db.collection("post").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        System.out.println("FOTOS PREPARADAS::::::::::");
+                        System.out.println("Images/" + fotos.get(finalI));
+                        StorageReference pathReference = storageRef.child("Images/" + fotos.get(finalI));
+                        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                System.out.println("on success single post"+uri.toString());
+                                storagePhotos.add(uri.toString());
+                                System.out.println("MAMASITA XD :    "+storagePhotos);
+
+
+                                //adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+                                //mListView.setAdapter(adapter);
+                                //adapter.notifyDataSetChanged();
+                                    }
+                                });
+                    } else {
+                        Log.d(TAG, "Error getting photos: ", task.getException());
+                    }
+                }
+
+            });
+
+        }
+
+
+
+
+
+
+
+
+
 
 
 
