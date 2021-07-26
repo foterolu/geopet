@@ -102,6 +102,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             // where we will add our locations latitude and longitude.
                             LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
                             mMap.clear(); //añadir solo un marker
+                            lat = latLng.latitude;
+                            longi = latLng.longitude;
 
                             // on below line we are adding marker to that position.
                             mMap.addMarker(new MarkerOptions().position(latLng).title(location));
