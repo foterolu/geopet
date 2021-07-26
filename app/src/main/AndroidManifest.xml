@@ -17,13 +17,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Geopet">
+
         <activity android:name=".ChatViews"
+            android:launchMode="singleTop"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".ChatMessage.Chat" />
+        <activity android:name=".ChatMessage.Chat"
+            android:parentActivityName=".ChatViews">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChatViews" />
+        </activity>
         <activity
             android:name=".SinglePost"
             android:parentActivityName=".MainActivity">

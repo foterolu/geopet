@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.geopet.ChatMessage.Chat;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -164,22 +166,6 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @Override
@@ -206,9 +192,18 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
         System.out.println("Latitud: "+lat + "Longitud: "+lon);
         double lat1=Double.parseDouble(lat);
         double lon1=Double.parseDouble(lon);
+        LatLng latLng = new LatLng(lat1, lon1);
+
         System.out.println(lat+"funcionara et wea latitu xd");
         String uri = String.format(Locale.ENGLISH, "geo:%f,%f", lat1, lon1);
+        System.out.println(uri);
+        /*
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        startActivity(intent);
+
+         */
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:<" + lat1  + ">,<" + lon1 + ">?q=<" + lat1  + ">,<" + lon1+ ">(" + "Visto" + ")"));
         startActivity(intent);
     }
 

@@ -80,7 +80,7 @@ public class ChatViews extends AppCompatActivity implements AdapterView.OnItemCl
                     String key = dsp.getKey();
                     if(key.contains(userId)){
                         System.out.println("Chat de usuario");
-                        keyChat.add(key);
+
                         List<String> lol = Arrays.asList(key.split(userId));
                         if(lol != null){
                             System.out.println(lol);
@@ -99,11 +99,12 @@ public class ChatViews extends AppCompatActivity implements AdapterView.OnItemCl
                                 @Override
                                 public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
                                     String email = task.getResult().getString("email");
+                                    keyChat.add(key);
                                     System.out.println(email);
                                     chatKeysUser.add(email);
                                     //mAdapter = new ArrayAdapter<String>(ChatViews.this, R.layout.message,R.id.show_message_left,chatKeysUser);
-                                    customArrayAdapter = new CustomArrayAdapter(ChatViews.this,chatKeysUser);
-                                    ChatsListView.setAdapter(customArrayAdapter );
+                                    customArrayAdapter = new CustomArrayAdapter(ChatViews.this,chatKeysUser,key);
+                                    ChatsListView.setAdapter(customArrayAdapter);
                                 }
                             });
                         }
@@ -131,8 +132,10 @@ public class ChatViews extends AppCompatActivity implements AdapterView.OnItemCl
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String result = keyChat.get(position);
+        String resultEmail = chatKeysUser.get(position);
         Intent intent = new Intent(getApplicationContext(), Chat.class);
         intent.putExtra("chatId",result);
+        intent.putExtra("email",resultEmail);
         startActivity(intent);
     }
 }

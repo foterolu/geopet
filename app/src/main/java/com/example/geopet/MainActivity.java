@@ -178,8 +178,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                             list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
                                                    images,userId, contacto,lat, lon, nombre, raza, usuario,
                                                     (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")  ));
-                                            adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
-                                            mListView.setAdapter(adapter);
+                                            adapter.notifyDataSetChanged();
 
                                             //System.out.println(links);
 
@@ -197,7 +196,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         }
                     }
         });
-        mListView.deferNotifyDataSetChanged();
+        adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+        mListView.setAdapter(adapter);
+
         mListView.setOnItemClickListener(this);
 
 

@@ -15,33 +15,35 @@ import java.util.ArrayList;
 
 public class CustomArrayAdapter  extends ArrayAdapter<String>{
     ArrayList<String> emails;
+    String chatId;
     Context mContext;
-    public CustomArrayAdapter(@NonNull Context context,ArrayList<String> emails) {
+    public CustomArrayAdapter(@NonNull Context context,ArrayList<String> emails,String chatId) {
         super(context, R.layout.activity_chat_views_item);
         this.emails = emails;
         this.mContext = context;
+        this.chatId = chatId;
     }
 
     @Override
     public int getCount(){
         return emails.size();
     }
+    public String getChatId(){
+        return chatId;
+    }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         ViewHolder viewHolder = new ViewHolder();
-        if(convertView == null){
-            LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.activity_chat_views_item,parent,false);
-            viewHolder.mFlag = (ImageView) convertView.findViewById(R.id.imageView2);
-            viewHolder.mEmail = (TextView) convertView.findViewById(R.id.user_email);
-            convertView.setTag(viewHolder);
 
-        }else{
-            viewHolder = (ViewHolder) convertView.getTag();
+        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        convertView = layoutInflater.inflate(R.layout.activity_chat_views_item,parent,false);
+        viewHolder.mFlag = (ImageView) convertView.findViewById(R.id.imageView2);
+        viewHolder.mEmail = (TextView) convertView.findViewById(R.id.user_email);
+        convertView.setTag(viewHolder);
 
-        }
+
         viewHolder.mFlag.setImageResource(R.mipmap.ic_launcher_round);
         viewHolder.mEmail.setText(emails.get(position));
 

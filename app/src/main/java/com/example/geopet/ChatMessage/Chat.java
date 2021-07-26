@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.geopet.R;
 import com.firebase.ui.database.FirebaseListAdapter;
@@ -32,7 +33,9 @@ public class Chat extends AppCompatActivity {
     private FirebaseListAdapter<ChatMessage> adapter;
     private FirebaseAuth fAuth;
     private String chatId;
+    private Toolbar toolbar;
     String userId;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,13 @@ public class Chat extends AppCompatActivity {
         userId = fAuth.getCurrentUser().getUid();
         Intent intent = getIntent();
         chatId = intent.getStringExtra("chatId");
+        email = intent.getStringExtra("email");
+
+        toolbar = findViewById(R.id.toolbar_chat);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(email);
         Toast.makeText(this,
                 chatId,
                 Toast.LENGTH_LONG)
