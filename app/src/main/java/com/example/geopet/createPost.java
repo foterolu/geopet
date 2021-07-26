@@ -31,6 +31,8 @@ import androidx.core.view.GravityCompat;
 import com.google.android.gms.maps.internal.IGoogleMapDelegate;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -55,6 +57,7 @@ public class createPost extends AppCompatActivity {
     TextView mlatlong;
     AutoCompleteTextView mComuna;
     ListView Post;
+    TextInputLayout mDescripcion,mRaza,mNombre,mContacto,mtipoanimal;
     Button ingresar,btnbrowse, btnmap;
     String[] comunas = new String[]{
             "Arica","Camarones","Putre","General Lagos","Iquique","Alto Hospicio","Pozo Almonte",
@@ -131,17 +134,30 @@ public class createPost extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Ingresar Datos de Mascota");
-
-
-
         FilePathUri = new ArrayList<>();;
+
+
+
+        mDescripcion = findViewById(R.id.description);
+        mNombre      = findViewById(R.id.name);
+        mRaza        = findViewById(R.id.raza);
+        //mdescripcion = findViewById(R.id.description);
+        mContacto    = findViewById(R.id.phone2);
+        //mComuna      = findViewById(R.id.Comuna2);
+        mtipoanimal= findViewById(R.id.tipoAnimal);
+
+        /*
         mnombre      = findViewById(R.id.name);
         mraza        = findViewById(R.id.raza);
         mdescripcion = findViewById(R.id.description);
         mcontacto    = findViewById(R.id.phone2);
-        mlatlong = findViewById(R.id.latlongtext);
         mComuna      = findViewById(R.id.Comuna2);
         mTipoAnimal= findViewById(R.id.tipoAnimal);
+
+        */
+        mComuna      = findViewById(R.id.Comuna2);
+
+        mlatlong = findViewById(R.id.latlongtext);
         ingresar = findViewById(R.id.añadir);
         btnbrowse = (Button)findViewById(R.id.btnbrowse);
         btnmap = (Button)findViewById(R.id.btnmap);
@@ -178,12 +194,12 @@ public class createPost extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String nombre      =  mnombre.getText().toString().trim();
-                String raza        = mraza.getText().toString().trim();
-                String descripcion = mdescripcion.getText().toString().trim();
-                String contacto    = mcontacto.getText().toString().trim();
+                String nombre      =  mNombre.getEditText().getText().toString().trim();
+                String raza        = mRaza.getEditText().getText().toString().trim();
+                String descripcion = mDescripcion.getEditText().getText().toString().trim();
+                String contacto    = mContacto.getEditText().getText().toString().trim();
                 String comuna = mComuna.getText().toString().trim();
-                String tipoAnimal= mTipoAnimal.getText().toString().trim();
+                String tipoAnimal = mtipoanimal.getEditText().getText().toString().trim();
                 String[] x = mlatlong.getText().toString().replaceAll("[()]","").split(",");
 
                 if (!(comunaList.contains(comuna))){

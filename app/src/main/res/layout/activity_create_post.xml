@@ -30,7 +30,8 @@
         tools:context=".createPost">
 
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,9 +44,16 @@
             android:inputType="text"
             android:backgroundTint="#00897B"
             android:textCursorDrawable="@drawable/cursor_color"
-            />
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <EditText
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:backgroundTint="#00897B"
             android:textCursorDrawable="@drawable/cursor_color"
             android:id="@+id/tipoAnimal"
@@ -55,9 +63,16 @@
             android:layout_marginTop="12dp"
             android:layout_marginRight="10dp"
             android:hint="Tipo animal encontrado"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <EditText
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:backgroundTint="#00897B"
             android:textCursorDrawable="@drawable/cursor_color"
             android:id="@+id/raza"
@@ -67,11 +82,18 @@
             android:layout_marginTop="12dp"
             android:layout_marginRight="10dp"
             android:hint="Raza"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:backgroundTint="#00897B"
             android:textCursorDrawable="@drawable/cursor_color"
             android:id="@+id/description"
@@ -85,9 +107,16 @@
             android:singleLine="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/raza" />
+            app:layout_constraintTop_toBottomOf="@+id/raza">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <EditText
+                </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:backgroundTint="#00897B"
             android:textCursorDrawable="@drawable/cursor_color"
             android:id="@+id/phone2"
@@ -98,7 +127,14 @@
             android:layout_marginRight="10dp"
             android:autofillHints="+56912345678"
             android:hint="Número de contacto"
-            android:inputType="phone" />
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="phone">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <AutoCompleteTextView
             android:id="@+id/Comuna2"
@@ -167,6 +203,7 @@
 
 
     </LinearLayout>
+
 </ScrollView>
 </LinearLayout>
 
