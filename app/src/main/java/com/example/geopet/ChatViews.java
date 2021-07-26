@@ -43,27 +43,32 @@ import java.util.regex.Pattern;
 
 public class ChatViews extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private FirebaseDatabase database;
-    private DatabaseReference chat_ref;
     private FirebaseAuth fAuth;
     private ListView listOfChats;
     private String userId;
     private Toolbar toolbar;
-    private FirebaseListAdapter<Chats> adapter;
+
     private ArrayList<String> chatKeysUser= new ArrayList<>();
     private ArrayAdapter<String> mAdapter;
     private ListView ChatsListView;
     private String otherUser;
     private ArrayList<String> keyChat = new ArrayList<>();
+
+    CustomArrayAdapter customArrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_views);
+
+
 
         toolbar = findViewById(R.id.toolbar_chat);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Chats");
+
+
         ChatsListView= (ListView) findViewById(R.id.list_of_chats);
         listOfChats = (ListView) findViewById(R.id.list_of_chats);
         userId = fAuth.getInstance().getCurrentUser().getUid();
@@ -73,15 +78,10 @@ public class ChatViews extends AppCompatActivity implements AdapterView.OnItemCl
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot dsp: snapshot.getChildren()){
                     String key = dsp.getKey();
-
-
-
                     if(key.contains(userId)){
                         System.out.println("Chat de usuario");
                         keyChat.add(key);
                         List<String> lol = Arrays.asList(key.split(userId));
-
-
                         if(lol != null){
                             System.out.println(lol);
                             if(lol.get(0).isEmpty()){
@@ -101,18 +101,13 @@ public class ChatViews extends AppCompatActivity implements AdapterView.OnItemCl
                                     String email = task.getResult().getString("email");
                                     System.out.println(email);
                                     chatKeysUser.add(email);
-                                    mAdapter = new ArrayAdapter<String>(ChatViews.this, R.layout.message,R.id.show_message_left,chatKeysUser);
-                                    ChatsListView.setAdapter(mAdapter);
+                                    //mAdapter = new ArrayAdapter<String>(ChatViews.this, R.layout.message,R.id.show_message_left,chatKeysUser);
+                                    customArrayAdapter = new CustomArrayAdapter(ChatViews.this,chatKeysUser);
+                                    ChatsListView.setAdapter(customArrayAdapter );
                                 }
                             });
                         }
-
-
-
-
-
                     }
-
                 }
             }
 
