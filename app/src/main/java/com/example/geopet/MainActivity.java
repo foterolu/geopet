@@ -136,9 +136,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                     pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
-
+                                            Card card = new Card(uri.toString(),
+                                                    (String) document.getData().get("descripcion"),
+                                                    images,userId,
+                                                    (String) document.getData().get("contacto"),
+                                                    (String) document.getData().get("lat"), (String) document.getData().get("lon"),
+                                                    (String) document.getData().get("nombre"), (String) document.getData().get("raza"),
+                                                    (String) document.getData().get("usuario"), (String) document.getData().get("comuna"),
+                                                    (String) document.getData().get("tipoAnimal")  );
                                             links.add(uri.toString());
-                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza"), (String) document.getData().get("usuario"), (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")  ));
+                                            list.add(card);
                                             System.out.println(links);
                                             adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                             mListView.setAdapter(adapter);
@@ -156,17 +163,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                     String nombre = (String) document.getData().get("nombre");
                                     String raza = (String) document.getData().get("raza");
                                     String usuario = (String) document.getData().get("usuario");
-                                    System.out.println(images);
+
                                     StorageReference pathReference = storageRef.child("Images/" + images.get(0));
-                                    System.out.println("Images/" + images.get(0));
+
                                     //String FirePath = "gs://geopet-9028c.appspot.com/" + "Images/"  +(String) document.getData().get("imagePath");
                                     //System.out.println(FirePath);
-                                    System.out.println("----------------Dentro del For----------------");
                                     pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
                                             System.out.println("----------------Dentro del OnSuccess----------------");
-                                            System.out.println(uri.toString());
+                                            images = (ArrayList<String>)  document.getData().get("imagePath");
+                                            System.out.println(images);
                                             links.add(uri.toString());
                                             list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
                                                    images,userId, contacto,lat, lon, nombre, raza, usuario,
@@ -276,9 +283,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                             String nombre = (String) document.getData().get("nombre");
                                             String raza = (String) document.getData().get("raza");
                                             String usuario = (String) document.getData().get("usuario");
-                                            System.out.println(images);
                                             StorageReference pathReference = storageRef.child("Images/" + images.get(0));
-                                            System.out.println("Images/" + images.get(0));
+
                                             //String FirePath = "gs://geopet-9028c.appspot.com/" + "Images/"  +(String) document.getData().get("imagePath");
                                             //System.out.println(FirePath);
                                             System.out.println("----------------Dentro del For----------------");
@@ -286,10 +292,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                                 @Override
                                                 public void onSuccess(Uri uri) {
                                                     System.out.println("----------------Dentro del OnSuccess----------------");
-                                                    System.out.println(uri.toString());
                                                     links.add(uri.toString());
+                                                    System.out.println(images);
                                                     list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
-                                                            images,userId, contacto,lat, lon, nombre, raza, usuario, (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")  ));
+                                                            images,userId, contacto,lat, lon, nombre, raza, usuario, (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")));
                                                     adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
                                                     mListView.setAdapter(adapter);
 
