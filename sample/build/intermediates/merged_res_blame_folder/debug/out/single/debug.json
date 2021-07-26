@@ -1,0 +1,110 @@
+[
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/layout_item_gallery_image.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/layout/item_gallery_image.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/layout_item_list_image.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/layout/item_list_image.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-hdpi_ic_stub.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-hdpi/ic_stub.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-xhdpi_ic_empty.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-xhdpi/ic_empty.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-mdpi_ic_stub.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-mdpi/ic_stub.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-hdpi_ic_empty.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-hdpi/ic_empty.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/layout_fr_image_pager.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/layout/fr_image_pager.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/layout_ac_home.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/layout/ac_home.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/layout_fr_image_gallery.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/layout/fr_image_gallery.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/xml_widget_provider.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/xml/widget_provider.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/layout_fr_image_list.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/layout/fr_image_list.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/layout_fr_image_grid.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/layout/fr_image_grid.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/layout_item_pager_image.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/layout/item_pager_image.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/layout_ac_complex.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/layout/ac_complex.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/layout_item_grid_image.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/layout/item_grid_image.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-xhdpi_ic_error.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-xhdpi/ic_error.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-hdpi_ic_error.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-hdpi/ic_error.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-mdpi_ic_empty.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-mdpi/ic_empty.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-xhdpi_ic_stub.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-xhdpi/ic_stub.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/layout_widget.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/layout/widget.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-mdpi_ic_error.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-mdpi/ic_error.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/menu_main_menu.xml.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/menu/main_menu.xml"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/nordic/AndroidStudioProjects/geopet/sample/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "/home/nordic/AndroidStudioProjects/geopet/sample/src/main/res/drawable-xxhdpi/ic_launcher.png"
+    }
+]

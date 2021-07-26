@@ -17,6 +17,8 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.geopet.ChatMessage.Chat;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,6 +31,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SinglePost extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private static final String TAG = "SinglePost";
@@ -50,13 +53,10 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_post);
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        picsGridView= (GridView) findViewById(R.id.picsGridView);
-        picsGridView.setAdapter(new GridImageAdapter(this));
+
+        ImageSlider imageSlider=findViewById(R.id.fotosSlider);
+        List<SlideModel> slideModels= new ArrayList<>();
 
 
 
@@ -92,6 +92,14 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
             //userID.setText(card.getUserId());
             //username=card.getUsername();
         }
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(card.getNombrePublicacion());
+
+
         String postUserId = card.getUserId();
         mbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +136,8 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
                             public void onSuccess(Uri uri) {
                                 System.out.println("on success single post"+uri.toString());
                                 storagePhotos.add(uri.toString());
+                                slideModels.add(new SlideModel(uri.toString()));
+                                imageSlider.setImageList(slideModels,true);
                                 System.out.println("MAMASITA XD :    "+storagePhotos);
 
 
@@ -144,6 +154,9 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
             });
 
         }
+
+
+
 
 
 

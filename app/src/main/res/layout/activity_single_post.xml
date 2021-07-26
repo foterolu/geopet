@@ -72,27 +72,34 @@
         android:layout_alignParentLeft="true"
         android:textStyle="bold" />
 
-
-    <GridView
-        android:id="@+id/picsGridView"
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/fotosSlider"
         android:layout_below="@+id/contactoID"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnWidth="90dp"
-        android:gravity="center"
-        android:horizontalSpacing="10dp"
-        android:numColumns="3"
-        android:verticalSpacing="10dp">
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        app:auto_cycle="true"
+        app:delay="0"
+        app:period="3000"
+        app:placeholder="@color/black"
+
+        app:corner_radius="20"
+    />
 
 
-    </GridView>
+    
+
+
+
+
+
 
     <Button
         android:id="@+id/chatButton"
         android:text="Chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/picsGridView">
+        android:layout_below="@+id/fotosSlider">
 
     </Button>
 

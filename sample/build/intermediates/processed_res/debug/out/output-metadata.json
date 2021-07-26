@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "PROCESSED_RES",
+    "kind": "Directory"
+  },
+  "applicationId": "com.nostra13.universalimageloader",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 40,
+      "versionName": "1.9.5",
+      "outputFile": "resources-debug.ap_"
+    }
+  ]
+}

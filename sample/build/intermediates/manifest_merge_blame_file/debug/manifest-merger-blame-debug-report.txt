@@ -1,0 +1,83 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.nostra13.universalimageloader"
+4    android:versionCode="40"
+5    android:versionName="1.9.5" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+8-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:5:5-67
+11-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+12-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:6:5-81
+12-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:6:22-78
+13
+14    <application
+14-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:8:5-39:19
+15        android:name="com.nostra13.universalimageloader.sample.UILApplication"
+15-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:9:9-39
+16        android:allowBackup="false"
+16-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:12:3-30
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/d5a1f4352734afbb20bd7a66add33042/core-1.0.0/AndroidManifest.xml:22:18-86
+18        android:debuggable="true"
+19        android:icon="@drawable/ic_launcher"
+19-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:10:9-45
+20        android:label="@string/app_name" >
+20-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:11:9-41
+21        <activity
+21-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:13:9-21:20
+22            android:name="com.nostra13.universalimageloader.sample.activity.HomeActivity"
+22-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:14:13-50
+23            android:label="@string/app_name" >
+23-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:15:13-45
+24            <intent-filter>
+24-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:16:13-20:29
+25                <action android:name="android.intent.action.MAIN" />
+25-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:17:17-69
+25-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:17:25-66
+26
+27                <category android:name="android.intent.category.LAUNCHER" />
+27-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:19:17-77
+27-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:19:27-74
+28            </intent-filter>
+29        </activity>
+30        <activity
+30-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:22:9-24:58
+31            android:name="com.nostra13.universalimageloader.sample.activity.SimpleImageActivity"
+31-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:23:13-57
+32            android:label="@string/ac_name_image_list" />
+32-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:24:13-55
+33        <activity
+33-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:25:3-27:46
+34            android:name="com.nostra13.universalimageloader.sample.activity.ComplexImageActivity"
+34-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:26:4-49
+35            android:label="@string/ac_name_complex" />
+35-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:27:4-43
+36
+37        <!-- Widget -->
+38        <receiver android:name="com.nostra13.universalimageloader.sample.widget.UILWidgetProvider" >
+38-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:30:9-38:20
+38-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:30:19-59
+39            <meta-data
+39-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:31:13-33:59
+40                android:name="android.appwidget.provider"
+40-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:32:17-58
+41                android:resource="@xml/widget_provider" />
+41-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:33:17-56
+42
+43            <intent-filter>
+43-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:35:13-37:29
+44                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+44-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:36:17-84
+44-->/home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:36:25-81
+45            </intent-filter>
+46        </receiver>
+47    </application>
+48
+49</manifest>

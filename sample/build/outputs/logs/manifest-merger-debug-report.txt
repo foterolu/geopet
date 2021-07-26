@@ -1,0 +1,186 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:2:1-41:12
+MERGED from [:library] /home/nordic/AndroidStudioProjects/geopet/library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.appcompat:appcompat:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/cc0f4e69d9cf0dd1cc75f91bcb0041ee/appcompat-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/b8d75b039b4954d8f28cefe1a72dec93/fragment-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/a2fd870dff78b31381d95150bd1099a6/vectordrawable-animated-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/c8ce7c7feeb32613fef6822b3b564976/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/41c57676c565b6e63746f28b26b4ab91/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/753d2affb02f8d5fed089bf354826b18/vectordrawable-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/b8111c0f8f81a34fee955f70ca18a7a8/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/c93cb483d435115c85861969384c9c22/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/dbc60fdc1a7eba3e7e7ccdf5014429cd/coordinatorlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/b06246c3e8ddcef9a350b5b58b79b840/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/f0d5419c4d660aa2528805f1cfdd0952/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/34af3c77e42a01275a6493f45d93f0da/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/e85b55d01e545eb5f9228a6ca7beca90/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/e8d52f9262c65af0d2be3d985e356cc5/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/d5a1f4352734afbb20bd7a66add33042/core-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/cd76a988325ff3042760d7c6dc581a7f/versionedparcelable-1.0.0/AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/ca2f21f0904e0cd28d0d578fc7e44fc6/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/65c2face7ad4f82da98e107e40b1d123/lifecycle-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/47a60da7c5f452bf21710dc49e5d67a4/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/be0f99f6e7dcab73224bae1a4f872902/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/a3379b634ecf73a1ce32826ffdb9d38b/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/98fc4a212e0592ee901ddb0bbedcd65b/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/c44f3f0e6c34d200d927ac5bedf5196e/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/a9a704a4aebd80f72a596a6063829dc3/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/9bdcfd6e4fee29edaa8aa68c6c838a6b/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/76dc6ba3c9271c66c4373d89457ee185/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:2:1-41:12
+	package
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:3:5-55
+		INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:2:1-41:12
+		INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:2:1-41:12
+		INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:6:22-78
+application
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:8:5-39:19
+MERGED from [androidx.core:core:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/d5a1f4352734afbb20bd7a66add33042/core-1.0.0/AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/d5a1f4352734afbb20bd7a66add33042/core-1.0.0/AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/cd76a988325ff3042760d7c6dc581a7f/versionedparcelable-1.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/cd76a988325ff3042760d7c6dc581a7f/versionedparcelable-1.0.0/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/d5a1f4352734afbb20bd7a66add33042/core-1.0.0/AndroidManifest.xml:22:18-86
+	android:label
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:11:9-41
+	android:icon
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:10:9-45
+	android:allowBackup
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:12:3-30
+	android:name
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:9:9-39
+activity#com.nostra13.universalimageloader.sample.activity.HomeActivity
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:13:9-21:20
+	android:label
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:15:13-45
+	android:name
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:14:13-50
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:19:27-74
+activity#com.nostra13.universalimageloader.sample.activity.SimpleImageActivity
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:22:9-24:58
+	android:label
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:24:13-55
+	android:name
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:23:13-57
+activity#com.nostra13.universalimageloader.sample.activity.ComplexImageActivity
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:25:3-27:46
+	android:label
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:27:4-43
+	android:name
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:26:4-49
+receiver#com.nostra13.universalimageloader.sample.widget.UILWidgetProvider
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:30:9-38:20
+	android:name
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:30:19-59
+meta-data#android.appwidget.provider
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:31:13-33:59
+	android:resource
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:33:17-56
+	android:name
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:32:17-58
+intent-filter#action:name:android.appwidget.action.APPWIDGET_UPDATE
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:35:13-37:29
+action#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:36:17-84
+	android:name
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml:36:25-81
+uses-sdk
+INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+MERGED from [:library] /home/nordic/AndroidStudioProjects/geopet/library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:library] /home/nordic/AndroidStudioProjects/geopet/library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/cc0f4e69d9cf0dd1cc75f91bcb0041ee/appcompat-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/cc0f4e69d9cf0dd1cc75f91bcb0041ee/appcompat-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/b8d75b039b4954d8f28cefe1a72dec93/fragment-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/b8d75b039b4954d8f28cefe1a72dec93/fragment-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/a2fd870dff78b31381d95150bd1099a6/vectordrawable-animated-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/a2fd870dff78b31381d95150bd1099a6/vectordrawable-animated-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/c8ce7c7feeb32613fef6822b3b564976/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/c8ce7c7feeb32613fef6822b3b564976/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/41c57676c565b6e63746f28b26b4ab91/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/41c57676c565b6e63746f28b26b4ab91/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/753d2affb02f8d5fed089bf354826b18/vectordrawable-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/753d2affb02f8d5fed089bf354826b18/vectordrawable-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/b8111c0f8f81a34fee955f70ca18a7a8/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/b8111c0f8f81a34fee955f70ca18a7a8/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/c93cb483d435115c85861969384c9c22/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/c93cb483d435115c85861969384c9c22/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/dbc60fdc1a7eba3e7e7ccdf5014429cd/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/dbc60fdc1a7eba3e7e7ccdf5014429cd/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/b06246c3e8ddcef9a350b5b58b79b840/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/b06246c3e8ddcef9a350b5b58b79b840/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/f0d5419c4d660aa2528805f1cfdd0952/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/f0d5419c4d660aa2528805f1cfdd0952/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/34af3c77e42a01275a6493f45d93f0da/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/34af3c77e42a01275a6493f45d93f0da/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/e85b55d01e545eb5f9228a6ca7beca90/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/e85b55d01e545eb5f9228a6ca7beca90/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/e8d52f9262c65af0d2be3d985e356cc5/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/e8d52f9262c65af0d2be3d985e356cc5/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/d5a1f4352734afbb20bd7a66add33042/core-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/d5a1f4352734afbb20bd7a66add33042/core-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/cd76a988325ff3042760d7c6dc581a7f/versionedparcelable-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/cd76a988325ff3042760d7c6dc581a7f/versionedparcelable-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/ca2f21f0904e0cd28d0d578fc7e44fc6/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/ca2f21f0904e0cd28d0d578fc7e44fc6/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/65c2face7ad4f82da98e107e40b1d123/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/65c2face7ad4f82da98e107e40b1d123/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/47a60da7c5f452bf21710dc49e5d67a4/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/47a60da7c5f452bf21710dc49e5d67a4/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/be0f99f6e7dcab73224bae1a4f872902/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/be0f99f6e7dcab73224bae1a4f872902/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/a3379b634ecf73a1ce32826ffdb9d38b/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/a3379b634ecf73a1ce32826ffdb9d38b/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/98fc4a212e0592ee901ddb0bbedcd65b/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/98fc4a212e0592ee901ddb0bbedcd65b/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/c44f3f0e6c34d200d927ac5bedf5196e/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/c44f3f0e6c34d200d927ac5bedf5196e/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/a9a704a4aebd80f72a596a6063829dc3/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/a9a704a4aebd80f72a596a6063829dc3/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/9bdcfd6e4fee29edaa8aa68c6c838a6b/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/9bdcfd6e4fee29edaa8aa68c6c838a6b/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/76dc6ba3c9271c66c4373d89457ee185/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nordic/.gradle/caches/transforms-2/files-2.1/76dc6ba3c9271c66c4373d89457ee185/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+		ADDED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/nordic/AndroidStudioProjects/geopet/sample/src/main/AndroidManifest.xml
