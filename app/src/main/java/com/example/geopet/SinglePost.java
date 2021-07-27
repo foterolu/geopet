@@ -46,9 +46,9 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
     GridView picsGridView;
     String username;
     ArrayList<String> fotos, storagePhotos=new ArrayList<String>();
-    String lat;
+    String lat, contacto;
     String lon;
-    TextView nombrePublicacion, descripcion, raza, contacto, comuna, tipoAnimal;
+    TextView nombrePublicacion, descripcion, raza, comuna, tipoAnimal, tvTipoAnimal, tvRaza, tvComuna;
     TextView userID; //SOLO DE PRUEBA, LUEGO REMOVER
     Button mbtn;
     String postUserId;
@@ -69,12 +69,18 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
 
         nombrePublicacion= (TextView) findViewById(R.id.nombrePublicacionId);
         descripcion= (TextView) findViewById(R.id.descripcionId);
-        contacto= (TextView) findViewById(R.id.contactoID);
         mbtn = findViewById(R.id.chatButton);
         raza= findViewById(R.id.razaId);
         comuna=findViewById(R.id.comunaId);
         tipoAnimal=findViewById(R.id.tipoAnimalId);
         botonMapa=findViewById(R.id.mapButton);
+
+        tvTipoAnimal=findViewById(R.id.tvTipoAnimal);
+        tvTipoAnimal.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_pets2, 0, 0, 0);
+        tvRaza=findViewById(R.id.tvRaza);
+        tvRaza.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_raza, 0, 0, 0);
+        tvComuna=findViewById(R.id.tvComuna);
+        tvComuna.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_place, 0, 0, 0);
 
 
 
@@ -84,13 +90,12 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
         Card card=null;
         if (cardSent!=null){
             card= (Card) cardSent.getSerializable("card");
-            System.out.println("lolardo Xd" +card.getNombrePublicacion());
             nombrePublicacion.setText(card.getNombrePublicacion());
             descripcion.setText(card.getDescripcion());
-            contacto.setText("Contacto: "+card.getContacto());
-            raza.setText("Raza animal: "+card.getRaza());
-            comuna.setText("Comuna: "+card.getComuna());
-            tipoAnimal.setText("Animal encontrado: "+card.getTipoAnimal());
+            contacto=card.getContacto()+'"';
+            raza.setText(card.getRaza());
+            comuna.setText(card.getComuna());
+            tipoAnimal.setText(card.getTipoAnimal());
             fotos=card.getUris();
             lat=card.getLat();
             lon=card.getLon();
@@ -219,5 +224,11 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
     }
 
 
+    public void callContact(View view) {
+        Intent i = new Intent(Intent.ACTION_DIAL);
+        System.out.println(contacto);
+        i.setData(Uri.parse("tel:"+contacto));
+        startActivity(i);
+    }
 }
 

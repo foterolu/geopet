@@ -17,7 +17,7 @@
         android:id="@+id/fotosSlider"
         android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         app:auto_cycle="true"
         app:delay="0"
         app:period="3000"
@@ -26,84 +26,189 @@
         />
 
     <TextView
-        android:text="lol"
         android:id="@+id/nombrePublicacionId"
         android:layout_below="@+id/fotosSlider"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:textColor="#070707"
         android:textSize="28sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/descripcionId"
-        android:layout_below="@+id/nombrePublicacionId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textColor="#070707"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tipoAnimalId"
-        android:layout_below="@+id/descripcionId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textColor="#070707"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/razaId"
-        android:layout_below="@+id/tipoAnimalId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textColor="#070707"
-        android:textSize="15sp"
-        android:textStyle="bold" />
 
 
-    <TextView
-        android:id="@+id/comunaId"
-        android:layout_below="@+id/razaId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textColor="#070707"
-        android:textSize="15sp"
-        android:layout_alignParentLeft="true"
-        android:textStyle="bold" />
-
-
-
-    <TextView
-        android:id="@+id/contactoID"
-        android:layout_below="@+id/comunaId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textColor="#070707"
-        android:textSize="15sp"
-        android:layout_alignParentLeft="true"
-        android:textStyle="bold" />
 
     <View
-        android:id="@+id/view1"
-        android:layout_below="@id/contactoID"
+        android:id="@+id/viewDesc"
+        android:layout_below="@id/nombrePublicacionId"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:layout_width="0dp"
         android:layout_height="10dp" />
+
+
+    <LinearLayout
+        android:id="@+id/linearTipoAnimal"
+        android:layout_below="@id/viewDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="horizontal" >
+
+
+
+
+        <TextView
+            android:id="@+id/tvTipoAnimal"
+            android:text="  Encontre un "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#070707"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/tipoAnimalId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#070707"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/viewLay1"
+        android:layout_below="@id/linearTipoAnimal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="0dp"
+        android:layout_height="10dp" />
+
+
+    <LinearLayout
+        android:id="@+id/linearRaza"
+        android:layout_below="@id/viewLay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tvRaza"
+            android:text=" Es de raza "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#070707"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+        <TextView
+            android:id="@+id/razaId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#070707"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+
+    <View
+        android:id="@+id/viewLay2"
+        android:layout_below="@id/linearRaza"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="0dp"
+        android:layout_height="7dp" />
+
+
+    <LinearLayout
+        android:id="@+id/linearComuna"
+        android:layout_below="@id/viewLay2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tvComuna"
+            android:text=" Fue encontrado en "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#070707"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+        <TextView
+            android:id="@+id/comunaId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#070707"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/viewCOM"
+        android:layout_below="@id/linearComuna"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="0dp"
+        android:layout_height="2dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_below="@id/viewCOM"
+        android:id="@+id/card1"
+        android:layout_width="match_parent"
+
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="@color/fb"
+        app:cardCornerRadius="10dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/descripcionId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#070707"
+            android:layout_margin="10dp"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <View
+        android:id="@+id/view1"
+        android:layout_below="@id/card1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="0dp"
+
+        android:layout_height="7dp" />
 
 
 
@@ -115,7 +220,7 @@
         android:id="@+id/linear1"
         android:layout_below="@id/view1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:orientation="horizontal" >
@@ -124,23 +229,34 @@
 
         <Button
             android:id="@+id/chatButton"
+            android:drawableLeft="@drawable/ic_chat"
             android:text="Chat"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </Button>
 
 
-        <View
-            android:layout_width="21dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+
+
+        <Button
+            android:drawableLeft="@drawable/ic_baseline_phone_in_talk_24"
+            android:id="@+id/callButton"
+            android:onClick="callContact"
+            android:backgroundTint="@color/green"
+            android:text="Llamar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Button>
+
 
         <Button
             android:id="@+id/mapButton"
+            android:drawableLeft="@drawable/ic_map2"
             android:onClick="desplegarMapa"
-            android:text="Ver mapa"
-            android:layout_weight="1"
+            android:text="ver mapa"
+
+
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </Button>
@@ -154,3 +270,6 @@
 
 
 </RelativeLayout>
+
+
+
