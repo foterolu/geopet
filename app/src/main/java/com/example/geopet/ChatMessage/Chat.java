@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.TypedValue;
@@ -52,10 +53,6 @@ public class Chat extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(email);
-        Toast.makeText(this,
-                chatId,
-                Toast.LENGTH_LONG)
-                .show();
 
 
         displayChatMessages();
@@ -111,9 +108,10 @@ public class Chat extends AppCompatActivity {
                     //messageText.setBackground(v.getResources().getDrawable(R.drawable.background_right));
 
                     // Set their text
-                    messageText.setText(model.getMessageText());
+                    messageText.setText(model.getMessageText().split("\n")[0]);
                     messageText.setPadding(15,15,15,15);
                     messageText.setTextColor(Color.WHITE);
+                    messageText.setTypeface(messageText.getTypeface(), Typeface.BOLD);
                     // Format the date before showing it
                     //messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
                       //      model.getMessageTime()));
@@ -127,7 +125,8 @@ public class Chat extends AppCompatActivity {
 
                     messageText.setPadding(15,15,15,15);
                     messageText.setTextColor(Color.BLACK);
-                    messageText.setText(model.getMessageText());
+                    messageText.setText(model.getMessageText().split("\n")[0]);
+                    messageText.setTypeface(messageText.getTypeface(), Typeface.BOLD);
 
 
                     // Format the date before showing it

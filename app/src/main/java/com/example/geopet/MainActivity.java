@@ -93,10 +93,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-                if(item.getItemId() == R.id.nav_cuenta){
 
-                    Toast.makeText(MainActivity.this, "Cuenta clicked", Toast.LENGTH_SHORT).show();
-                }
                 if(item.getItemId() == R.id.nav_chat){
                     startActivity(new Intent(getApplicationContext(),ChatViews.class));
                 }

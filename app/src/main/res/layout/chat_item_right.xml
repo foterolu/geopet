@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/background_right"
             android:layout_alignParentEnd="true"
+            android:textStyle="bold"
             android:layout_alignParentRight="true">
 
         </TextView>

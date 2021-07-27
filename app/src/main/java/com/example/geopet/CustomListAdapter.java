@@ -60,7 +60,7 @@ public class CustomListAdapter extends ArrayAdapter<Card> {
 
 
         //get the persons information
-        String title = getItem(position).getDescripcion();
+        String title = getItem(position).getNombrePublicacion();
         String imgUrl = getItem(position).getImgUrl();
 
         //create the view result for showing the animation
