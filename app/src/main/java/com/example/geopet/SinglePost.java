@@ -90,7 +90,7 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
             contacto.setText("Contacto: "+card.getContacto());
             raza.setText("Raza animal: "+card.getRaza());
             comuna.setText("Comuna: "+card.getComuna());
-            tipoAnimal.setText("Tipo animal encontrado: "+card.getTipoAnimal());
+            tipoAnimal.setText("Animal encontrado: "+card.getTipoAnimal());
             fotos=card.getUris();
             lat=card.getLat();
             lon=card.getLon();

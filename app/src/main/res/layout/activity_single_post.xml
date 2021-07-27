@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     tools:context=".SinglePost">
     <include
         layout="@layout/toolbar_layout"
@@ -13,13 +15,26 @@
         >
     </include>
 
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/fotosSlider"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        app:auto_cycle="true"
+        app:delay="0"
+        app:period="3000"
+        app:placeholder="@color/black"
+        app:corner_radius="20"
+        />
+
     <TextView
         android:id="@+id/nombrePublicacionId"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/fotosSlider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#070707"
-        android:textSize="13sp"
+        android:textSize="28sp"
         android:textStyle="bold" />
 
     <TextView
@@ -28,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#070707"
-        android:textSize="13sp"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
     <TextView
@@ -37,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#070707"
-        android:textSize="13sp"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
     <TextView
@@ -46,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#070707"
-        android:textSize="13sp"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
 
@@ -56,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#070707"
-        android:textSize="13sp"
+        android:textSize="15sp"
         android:layout_alignParentLeft="true"
         android:textStyle="bold" />
 
@@ -68,22 +83,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#070707"
-        android:textSize="13sp"
+        android:textSize="15sp"
         android:layout_alignParentLeft="true"
         android:textStyle="bold" />
 
-    <com.denzcoskun.imageslider.ImageSlider
-        android:id="@+id/fotosSlider"
-        android:layout_below="@+id/contactoID"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="20dp"
-        app:auto_cycle="true"
-        app:delay="0"
-        app:period="3000"
-        app:placeholder="@color/black"
-        app:corner_radius="20"
-    />
+    <View
+        android:id="@+id/view1"
+        android:layout_below="@id/contactoID"
+        android:layout_width="0dp"
+        android:layout_height="10dp" />
+
+
 
 
 
@@ -91,27 +101,37 @@
 
     <LinearLayout
         android:id="@+id/linear1"
-        android:layout_below="@id/fotosSlider"
+        android:layout_below="@id/view1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:orientation="horizontal" >
+
+
+
+        <Button
+            android:id="@+id/chatButton"
+            android:text="Chat"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Button>
+
+
+        <View
+            android:layout_width="21dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/mapButton"
             android:onClick="desplegarMapa"
             android:text="Ver mapa"
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </Button>
-
-        <Button
-            android:id="@+id/chatButton"
-            android:text="Chat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </Button>
-
-
 
 
 
