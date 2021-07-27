@@ -121,6 +121,7 @@ public class createPost extends AppCompatActivity {
     int Image_Request_Code = 7;
     int Map_request_code = 1;
     String userEmail;
+    String x;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -261,6 +262,7 @@ public class createPost extends AppCompatActivity {
         if (requestCode == Map_request_code && resultCode == RESULT_OK && data != null){
             TextView text = findViewById(R.id.latlongtext);
             text.setText(data.getStringExtra("value"));
+
         }
 
 

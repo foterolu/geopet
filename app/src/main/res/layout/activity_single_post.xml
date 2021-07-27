@@ -10,17 +10,14 @@
         layout="@layout/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         >
     </include>
-
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/fotosSlider"
         android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
         android:layout_height="200dp"
-        android:layout_margin="20dp"
         app:auto_cycle="true"
         app:delay="0"
         app:period="3000"
@@ -29,6 +26,7 @@
         />
 
     <TextView
+        android:text="lol"
         android:id="@+id/nombrePublicacionId"
         android:layout_below="@+id/fotosSlider"
         android:paddingLeft="16dp"

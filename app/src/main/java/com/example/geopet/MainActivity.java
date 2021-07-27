@@ -127,34 +127,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 String image = new String();
                                 System.out.println(document.getData().get("imagePath").getClass());
-                                if(document.getData().get("imagePath").getClass() == image.getClass() ){
-                                    image = (String) document.getData().get("imagePath");
-                                    String userId = (String) document.getData().get("userId");
-                                    images.add(image);
-                                    //System.out.println("images/" + (String) document.getData().get("imagePath"));
-                                    StorageReference pathReference = storageRef.child("Images/" + document.getData().get("imagePath"));
-                                    pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
-                                            Card card = new Card(uri.toString(),
-                                                    (String) document.getData().get("descripcion"),
-                                                    images,userId,
-                                                    (String) document.getData().get("contacto"),
-                                                    (String) document.getData().get("lat"), (String) document.getData().get("long"),
-                                                    (String) document.getData().get("nombre"), (String) document.getData().get("raza"),
-                                                    (String) document.getData().get("usuario"), (String) document.getData().get("comuna"),
-                                                    (String) document.getData().get("tipoAnimal")  );
-                                            links.add(uri.toString());
-                                            list.add(card);
-                                            System.out.println(links);
-                                            adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
-                                            mListView.setAdapter(adapter);
-                                            adapter.notifyDataSetChanged();
-                                            images.clear();
-                                        }
-                                    });
+                                if(document.getData().get("imagePath").getClass() != null ){
 
-                                }else{
+
                                     images = (ArrayList<String>)  document.getData().get("imagePath");
                                     String userId = (String) document.getData().get("userId");
                                     String contacto = (String) document.getData().get("contacto");
@@ -240,81 +215,125 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         SearchView.OnQueryTextListener reader = new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
+                list.clear();
+                images.clear();
+                adapter.notifyDataSetChanged();
+                    /*
+                    adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
+                    mListView.setAdapter(adapter);
+
+                     */
+                db.collection("post").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            int i = 0;
+                            ArrayList<String> links = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                if (document.getData().get("comuna").toString().contains(query) || query.length() == 0){
+                                    System.out.println("-----------------LO CONTIENE O ES 0-------------------");
+                                    String image = new String();
+
+                                    images = (ArrayList<String>)  document.getData().get("imagePath");
+                                    String userId = (String) document.getData().get("userId");
+                                    String contacto = (String) document.getData().get("contacto");
+                                    String lat = (String) document.getData().get("lat");
+                                    String lon = (String) document.getData().get("lon");
+                                    String nombre = (String) document.getData().get("nombre");
+                                    String raza = (String) document.getData().get("raza");
+                                    String usuario = (String) document.getData().get("usuario");
+                                    StorageReference pathReference = storageRef.child("Images/" + images.get(0));
+
+                                    //String FirePath = "gs://geopet-9028c.appspot.com/" + "Images/"  +(String) document.getData().get("imagePath");
+                                    //System.out.println(FirePath);
+
+                                    pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+
+                                            links.add(uri.toString());
+                                            System.out.println(images);
+                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
+                                                    images,userId, contacto,lat, lon, nombre, raza, usuario, (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")));
+                                            adapter.notifyDataSetChanged();
+
+
+                                            //System.out.println(links);
+
+                                        }
+                                    });
+                                    //System.out.println(links);
+                                    //error cuando no hay foto
+
+                                }
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String query) {
-                    list.clear();
-                    adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
-                    mListView.setAdapter(adapter);
-                    db.collection("post").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                int i = 0;
-                                ArrayList<String> links = new ArrayList<>();
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    if (document.getData().get("comuna").toString().contains(query) || query.length() == 0){
-                                        String image = new String();
-                                        if(document.getData().get("imagePath").getClass() == image.getClass() ){
-                                            image = (String) document.getData().get("imagePath");
-                                            String userId = (String) document.getData().get("userId");
-                                            images.add(image);
-                                            //System.out.println("images/" + (String) document.getData().get("imagePath"));
-                                            StorageReference pathReference = storageRef.child("Images/" + document.getData().get("imagePath"));
-                                            pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                                @Override
-                                                public void onSuccess(Uri uri) {
+                list.clear();
+                images.clear();
+                adapter.notifyDataSetChanged();
+                db.collection("post").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            int i = 0;
+                            ArrayList<String> links = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                                    links.add(uri.toString());
-                                                    list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),images,userId, (String) document.getData().get("contacto"),(String) document.getData().get("lat"), (String) document.getData().get("lon"), (String) document.getData().get("nombre"), (String) document.getData().get("raza"), (String) document.getData().get("usuario"), (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")  ));
-                                                    System.out.println(links);
-                                                    adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
-                                                    //mListView.setAdapter(adapter);
-                                                    images.clear();
-                                                }
-                                            });
-                                        }else{
-                                            images = (ArrayList<String>)  document.getData().get("imagePath");
-                                            String userId = (String) document.getData().get("userId");
-                                            String contacto = (String) document.getData().get("contacto");
-                                            String lat = (String) document.getData().get("lat");
-                                            String lon = (String) document.getData().get("lon");
-                                            String nombre = (String) document.getData().get("nombre");
-                                            String raza = (String) document.getData().get("raza");
-                                            String usuario = (String) document.getData().get("usuario");
-                                            StorageReference pathReference = storageRef.child("Images/" + images.get(0));
+                                if (query.length() == 0){
+                                    System.out.println("-----------------LO CONTIENE O ES 0-------------------");
+                                    String image = new String();
 
-                                            //String FirePath = "gs://geopet-9028c.appspot.com/" + "Images/"  +(String) document.getData().get("imagePath");
-                                            //System.out.println(FirePath);
-                                            System.out.println("----------------Dentro del For----------------");
-                                            pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                                @Override
-                                                public void onSuccess(Uri uri) {
-                                                    System.out.println("----------------Dentro del OnSuccess----------------");
-                                                    links.add(uri.toString());
-                                                    System.out.println(images);
-                                                    list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
-                                                            images,userId, contacto,lat, lon, nombre, raza, usuario, (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")));
-                                                    adapter = new CustomListAdapter(MainActivity.this,R.layout.activity_main,list);
-                                                    mListView.setAdapter(adapter);
+                                    images = (ArrayList<String>)  document.getData().get("imagePath");
+                                    String userId = (String) document.getData().get("userId");
+                                    String contacto = (String) document.getData().get("contacto");
+                                    String lat = (String) document.getData().get("lat");
+                                    String lon = (String) document.getData().get("lon");
+                                    String nombre = (String) document.getData().get("nombre");
+                                    String raza = (String) document.getData().get("raza");
+                                    String usuario = (String) document.getData().get("usuario");
+                                    StorageReference pathReference = storageRef.child("Images/" + images.get(0));
 
-                                                    //System.out.println(links);
+                                    //String FirePath = "gs://geopet-9028c.appspot.com/" + "Images/"  +(String) document.getData().get("imagePath");
+                                    //System.out.println(FirePath);
 
-                                                }
-                                            });
+                                    pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+
+                                            links.add(uri.toString());
+                                            System.out.println(images);
+                                            list.add(new Card(uri.toString(), (String) document.getData().get("descripcion"),
+                                                    images,userId, contacto,lat, lon, nombre, raza, usuario, (String) document.getData().get("comuna"), (String) document.getData().get("tipoAnimal")));
+                                            adapter.notifyDataSetChanged();
+
+
                                             //System.out.println(links);
-                                            //error cuando no hay foto
+
                                         }
-                                    }
+                                    });
+                                    //System.out.println(links);
+                                    //error cuando no hay foto
+
                                 }
-                            } else {
-                                Log.d(TAG, "Error getting documents: ", task.getException());
                             }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
                         }
-                    });
-                return false;
+                    }
+                });
+                    return false;
             }
         };
 
@@ -333,7 +352,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         SearchView searchView= (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setQueryHint("Ingresa Comuna...");
         searchView.setOnQueryTextListener(reader);
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
 
