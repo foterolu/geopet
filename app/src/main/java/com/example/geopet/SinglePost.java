@@ -90,6 +90,7 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
         Card card=null;
         if (cardSent!=null){
             card= (Card) cardSent.getSerializable("card");
+            username = card.getUsername();
             nombrePublicacion.setText(card.getNombrePublicacion());
             descripcion.setText(card.getDescripcion());
             contacto=card.getContacto()+'"';
@@ -124,9 +125,11 @@ public class SinglePost extends AppCompatActivity implements AdapterView.OnItemC
                 if(postUserId.compareTo(userId) == 0){
                     Toast.makeText(SinglePost.this, "Eres el dueño de la publicación", Toast.LENGTH_SHORT ).show();
                 }else{
+
                     String result = setOneToOneChat(userId,postUserId);
                     Intent intent = new Intent(getApplicationContext(), Chat.class);
                     intent.putExtra("chatId",result);
+                    intent.putExtra("email",username);
                     startActivity(intent);
 
                 }
