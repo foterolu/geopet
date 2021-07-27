@@ -18,38 +18,25 @@
         android:layout_gravity="center">
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="75dp"
-            android:layout_weight="1"
-            android:layout_height="75dp"
-            app:srcCompat="@drawable/pet_logo" />
-        <TextView
-            android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="GeoPet"
-            android:layout_weight="1"
-            android:textAllCaps="true"
-            android:textColor="#3F51B5"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            android:typeface="normal" />
+            android:layout_height="150dp"
+            app:srcCompat="@drawable/ic_geopetsv" />
     </LinearLayout>
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="30dp"
         android:textAlignment="center"
         android:text="Crear Cuenta"
-        android:textColor="#070707"
+        android:textColor="@color/purple_200"
         android:textSize="30sp"
 
         android:textStyle="bold" />
 
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/fullname"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
@@ -57,11 +44,21 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-
         android:hint="Nombre completo"
-        android:inputType="textPersonName"
-         />
-    <EditText
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        android:inputType="textPersonName">
+        <com.google.android.material.textfield.TextInputEditText
+
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/phone"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
@@ -71,10 +68,19 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Celular"
-        android:inputType="textPersonName"
-       />
+        app:startIconDrawable="@drawable/ic_baseline_phone_android_24"
+        android:inputType="textPersonName">
+        <com.google.android.material.textfield.TextInputEditText
 
-    <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/password"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
@@ -82,6 +88,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="12dp"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
 
         android:ems="10"
         android:hint="Contraseña"
@@ -89,9 +96,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullname" />
+        app:layout_constraintTop_toBottomOf="@+id/fullname" >
+        <com.google.android.material.textfield.TextInputEditText
 
-    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/Email"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
@@ -100,19 +115,26 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="12dp"
         android:hint="Email"
+        app:startIconDrawable="@drawable/ic_baseline_email_24"
         android:inputType="textPersonName"
-         />
-    <AutoCompleteTextView
-        android:id="@+id/Comuna"
-        android:gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:hint="Comuna"
-        android:layout_marginTop="12dp"/>
+         >
+        <com.google.android.material.textfield.TextInputEditText
 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <AutoCompleteTextView
+            android:id="@+id/Comuna"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Comuna"
+            android:layout_marginTop="12dp"/>
 
 
 
@@ -122,7 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="10dp"
         android:text="Registrarse"
          />
 

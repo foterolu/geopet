@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Register extends AppCompatActivity {
-    EditText mFullName,mEmail,mPassword,mPhone;
+    TextInputLayout mFullName,mEmail,mPassword,mPhone;
     Button mRegisterBtn;
     TextView mLoginBtn;
     FirebaseAuth fAuth;
@@ -115,10 +117,10 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
-                String name = mFullName.getText().toString().trim();
-                String phone = mPhone.getText().toString().trim();
+                String email = mEmail.getEditText().getText().toString().trim();
+                String password = mPassword.getEditText().getText().toString().trim();
+                String name = mFullName.getEditText().getText().toString().trim();
+                String phone = mPhone.getEditText().getText().toString().trim();
                 String comuna = mComuna.getText().toString().trim();
 
                 if (!(comunaList.contains(comuna))){
