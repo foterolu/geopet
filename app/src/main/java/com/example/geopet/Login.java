@@ -14,11 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
-    EditText mFullName,mEmail,mPassword,mPhone;
+    TextInputLayout mFullName,mEmail,mPassword,mPhone;
     Button mLoginBtn;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
@@ -36,8 +37,8 @@ public class Login extends AppCompatActivity {
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
+                String email = mEmail.getEditText().getText().toString().trim();
+                String password = mPassword.getEditText().getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email Requerido");
