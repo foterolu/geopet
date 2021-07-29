@@ -92,13 +92,13 @@
 
         android:ems="10"
         android:hint="Contraseña"
-        android:inputType="textPassword"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullname" >
         <com.google.android.material.textfield.TextInputEditText
-
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

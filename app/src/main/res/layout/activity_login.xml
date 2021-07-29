@@ -61,11 +61,12 @@
             android:autofillHints="Cachupin"
             android:textColor="@color/black"
             android:hint="Contraseña"
-            android:inputType="textPassword"
+
             android:backgroundTint="#00897B"
             android:textCursorDrawable="@drawable/cursor_color"
             >
             <com.google.android.material.textfield.TextInputEditText
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
